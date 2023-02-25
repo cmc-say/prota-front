@@ -1,16 +1,26 @@
 import { World } from "./world";
 
+type Props = {
+    id: number;
+    worldList: World[] | null;
+    characterName: string;
+    characterImg: string;
+    todayComment: string;
+}
 export class Character {
     id: number;
     characterName: string;
     characterImg: string;
-    characterMessage: string;
     worldList: World[];
-    TodayComment: string
+    todayComment: string
 
-    constructor(id: number, worldList?: World[]) {
+    // constructor(id: number, worldList?: World[], characterName: string, characterImg: string, todayComment: string) {
+    constructor({id, worldList, characterName, characterImg, todayComment}: Props) {
         this.id = id;
         this.worldList = worldList || [];
+        this.characterName = characterName;
+        this.characterImg = characterImg;
+        this.todayComment = todayComment;
     }
 
     isEqualTo(character: Character): boolean {
@@ -35,6 +45,6 @@ export class Character {
     }
 
     updateComment(message: string) {
-        this.TodayComment = message;
+        this.todayComment = message;
     }
 }
