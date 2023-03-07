@@ -49,9 +49,9 @@ export type GetUserCharactersReq = {};
 export type GetUserCharacterRes = {};
 
 export type ParticipateWorldReq = {};
-export type ParticipateWroldRes = {};
+export type ParticipateWorldRes = {};
 
-export type AddChacracterReq = {};
+export type AddCharacterReq = {};
 export type AddCharacterRes = {};
 
 export type GetRecommendedWorldReq = {};
@@ -76,7 +76,7 @@ export type DeleteCharacterReq = {};
 export type DeleteCharacterRes = {};
 
 export type CreateHashTagReq = {};
-export type CreateHashTageRes = {};
+export type CreateHashTagRes = {};
 
 export type SearchHashTagReq = {};
 export type SearchHashTagRes = {};
