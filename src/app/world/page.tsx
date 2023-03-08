@@ -1,9 +1,11 @@
 "use client";
 
 import styled from "@emotion/styled";
-import Image from "next/image";
-import { use, useState } from "react";
+import { useState } from "react";
 import { WorldCard } from "../components/world/WorldCard";
+import { Layout } from "@/styled/layout";
+import { WorldCharacter } from "../components/world/WorldCharacter";
+import { CreateWorld } from "../components/world/CreateWorld";
 
 const mockupData = {
   characters: {
@@ -13,8 +15,8 @@ const mockupData = {
     data: [
       {
         characterId: 1,
-        characterName: "bibimbap",
-        characterImg: "/icons/bibimbap.svg",
+        characterName: "steve_jobs",
+        characterImg: "/icons/steve_jobs.svg",
         characterMessage: "캐릭터 상태메세지",
       },
       {
@@ -75,7 +77,7 @@ const mockupData = {
         ],
       },
       {
-        worldId: 1,
+        worldId: 2,
         worldName: "세계관 하나",
         worldUserLimit: 10,
         worldImg: "url",
@@ -120,7 +122,7 @@ const mockupData = {
         ],
       },
       {
-        worldId: 1,
+        worldId: 3,
         worldName: "세계관 하나",
         worldUserLimit: 10,
         worldImg: "url",
@@ -165,7 +167,7 @@ const mockupData = {
         ],
       },
       {
-        worldId: 2,
+        worldId: 4,
         worldName: "세계관 둘 하나",
         worldUserLimit: 10,
         worldImg: "url",
@@ -200,7 +202,7 @@ const mockupData = {
         ],
       },
       {
-        worldId: 2,
+        worldId: 5,
         worldName: "세계관 둘 하나",
         worldUserLimit: 10,
         worldImg: "url",
@@ -235,7 +237,7 @@ const mockupData = {
         ],
       },
       {
-        worldId: 2,
+        worldId: 6,
         worldName: "세계관 둘 하나",
         worldUserLimit: 10,
         worldImg: "url",
@@ -273,52 +275,47 @@ const mockupData = {
   },
 };
 
-const getData = async () => {
-  const characters = mockupData.characters;
-  const worlds = mockupData.worlds;
-
-  return {
-    characters,
-    worlds,
-  };
-};
-
 export default function World() {
   const [select, setSelect] = useState(0);
 
-  const { characters, worlds } = use(getData());
-
-  console.log(characters, worlds);
-
   return (
-    <div>
-      <div>
-        <WorldStyled.Icon
-          width={44}
-          height={44}
-          src="/icons/bibimbap.svg"
-          alt="bibimbap"
-        />
-        <WorldStyled.Icon
-          width={44}
-          height={44}
-          src="/icons/masterpiece.svg"
-          alt="masterpiece"
-        />
-        <WorldStyled.Icon
-          width={44}
-          height={44}
-          src="/icons/steve_jobs.svg"
-          alt="steve_jobs"
-        />
-      </div>
-      <div>
-        <WorldCard />
-      </div>
-    </div>
+    <Layout.Wrapper>
+      <Layout.Mobile>
+        <Layout.FlexColumn>
+          <WorldStyled.Container>
+            <WorldStyled.CharacterList>
+              {mockupData.characters.data.map((item) => (
+                <WorldCharacter
+                  key={item.characterId}
+                  src={item.characterImg}
+                  value={item.characterName}
+                />
+              ))}
+              <WorldCharacter src={"/icons/character_add.svg"} value={"추가"} />
+            </WorldStyled.CharacterList>
+            <WorldStyled.WorldGapList>
+              {mockupData.worlds.data.map((item) => (
+                <WorldCard key={item.worldId} data={item} />
+              ))}
+              <CreateWorld />
+            </WorldStyled.WorldGapList>
+          </WorldStyled.Container>
+        </Layout.FlexColumn>
+      </Layout.Mobile>
+    </Layout.Wrapper>
   );
 }
 
 const WorldStyled = {
-  Icon: styled(Image)``,
+  Container: styled.div`
+    padding: 24px;
+  `,
+  WorldGapList: styled(Layout.FlexColumn)`
+    row-gap: 16px;
+  `,
+  CharacterList: styled.div`
+    display: flex;
+    column-gap: 16px;
+    margin-bottom: 16px;
+  `,
 };
