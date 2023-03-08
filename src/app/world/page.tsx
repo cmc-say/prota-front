@@ -3,6 +3,7 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { use, useState } from "react";
+import { WorldCard } from "../components/world/WorldCard";
 
 const mockupData = {
   characters: {
@@ -12,14 +13,14 @@ const mockupData = {
     data: [
       {
         characterId: 1,
-        characterName: "캐릭터이름",
-        characterImg: "이미지 url",
+        characterName: "bibimbap",
+        characterImg: "/icons/bibimbap.svg",
         characterMessage: "캐릭터 상태메세지",
       },
       {
         characterId: 2,
-        characterName: "캐릭터이름",
-        characterImg: "이미지 url",
+        characterName: "masterpiece",
+        characterImg: "/icons/masterpiece.svg",
         characterMessage: "캐릭터 상태메세지",
       },
     ],
@@ -311,7 +312,9 @@ export default function World() {
           alt="steve_jobs"
         />
       </div>
-      <div></div>
+      <div>
+        <WorldCard />
+      </div>
     </div>
   );
 }
