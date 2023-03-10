@@ -6,6 +6,7 @@ import { WorldCard } from "../components/world/WorldCard";
 import { Layout } from "@/styled/layout";
 import { WorldCharacter } from "../components/world/WorldCharacter";
 import { CreateWorld } from "../components/world/CreateWorld";
+import { Theme } from "@/styled/theme";
 
 const mockupData = {
   characters: {
@@ -280,7 +281,7 @@ export default function World() {
 
   return (
     <Layout.Wrapper>
-      <Layout.Mobile>
+      <WorldStyled.Mobile>
         <Layout.FlexColumn>
           <WorldStyled.Container>
             <WorldStyled.CharacterList>
@@ -300,8 +301,9 @@ export default function World() {
               <CreateWorld />
             </WorldStyled.WorldGapList>
           </WorldStyled.Container>
+          {/* <Theme.Light></Theme.Light> */}
         </Layout.FlexColumn>
-      </Layout.Mobile>
+      </WorldStyled.Mobile>
     </Layout.Wrapper>
   );
 }
@@ -317,5 +319,8 @@ const WorldStyled = {
     display: flex;
     column-gap: 16px;
     margin-bottom: 16px;
+  `,
+  Mobile: styled(Layout.Mobile)`
+    overflow-y: scroll;
   `,
 };

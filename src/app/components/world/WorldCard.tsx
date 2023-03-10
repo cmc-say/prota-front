@@ -2,6 +2,7 @@ import { ColorType } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type MCard = {
   data: {
@@ -28,8 +29,10 @@ type MCard = {
 };
 
 export const WorldCard: React.FC<MCard> = ({ data }) => {
+  const router = useRouter();
+
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => router.push(`world/${data.worldId}`)}>
       <DDay>
         <Image src={"/icons/d_day.svg"} width={110} height={62} alt="d_day" />
         <DDayText color={ColorType.SECONDARY1} type={TextSizeType.KR_HEAD_03}>
