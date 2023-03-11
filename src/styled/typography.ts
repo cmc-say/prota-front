@@ -19,6 +19,8 @@ interface TextProps {
 
 export const Text = styled.span<TextProps>`
   color: ${(props) => props.color};
+  font-family: "Pretendard";
+
   ${(props) => {
     switch (props.type) {
       case TextSizeType.KR_HEAD_01:

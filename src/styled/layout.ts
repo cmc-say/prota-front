@@ -12,7 +12,6 @@ export const Layout = {
     max-width: 390px;
     width: 100%;
     height: 100%;
-
     margin: auto;
   `,
   FlexColumn: styled.div`
