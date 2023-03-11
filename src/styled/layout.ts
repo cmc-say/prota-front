@@ -7,6 +7,8 @@ export const Layout = {
     width: 100vw;
     height: 100vh;
     background-color: ${ColorType.BACKGROUND};
+    position: relative;
+    overflow: hidden;
   `,
   Mobile: styled.div`
     max-width: 390px;
