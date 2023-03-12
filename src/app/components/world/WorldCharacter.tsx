@@ -9,15 +9,16 @@ import Image from "next/image";
 type Props = {
   src: string;
   value: string;
+  size?: number;
 };
 
-export const WorldCharacter: React.FC<Props> = ({ src, value }) => {
+export const WorldCharacter: React.FC<Props> = ({ src, value, size = 44 }) => {
   return (
     <>
       <WorldCharacterStyled.Container>
         <WorldCharacterStyled.Icon
-          width={44}
-          height={44}
+          width={size}
+          height={size}
           alt={value}
           src={src}
         />
