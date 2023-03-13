@@ -31,7 +31,9 @@ export const WorldCharacter: React.FC<Props> = ({ src, value, size = 44 }) => {
 };
 
 const WorldCharacterStyled = {
-  Container: styled(Layout.FlexColumn)`
+  Container: styled.div`
+    display: flex;
+    flex-direction: column;
     width: auto;
     align-items: center;
     row-gap: 4px;

@@ -8,5 +8,6 @@ export const Header = () => {
 
 const Nav = styled.div`
   width: 100%;
+  margin-bottom: 8px;
   height: 52px;
 `;

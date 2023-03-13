@@ -1,12 +1,11 @@
 "use client";
 
-import styled from "@emotion/styled";
-import { useState } from "react";
-import { WorldCard } from "../components/world/WorldCard";
+import { Header } from "@/app/components/header/Header";
+import { WorldCard } from "@/app/components/world/WorldCard";
+import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
-import { WorldCharacter } from "../components/world/WorldCharacter";
-import { CreateWorld } from "../components/world/CreateWorld";
-import { Theme } from "@/styled/theme";
+import { Text, TextSizeType } from "@/styled/typography";
+import styled from "@emotion/styled";
 
 const mockupData = {
   characters: {
@@ -276,53 +275,41 @@ const mockupData = {
   },
 };
 
-export default function World() {
-  const [select, setSelect] = useState(0);
-
+export default function PopularWorld() {
   return (
-    <WorldStyled.LWrapper>
+    <PopularWorldStyled.LWrapper>
       <Layout.Mobile>
-        <Layout.FlexColumn>
-          <WorldStyled.Container>
-            <WorldStyled.CharacterList>
-              {mockupData.characters.data.map((item) => (
-                <WorldCharacter
-                  key={item.characterId}
-                  src={item.characterImg}
-                  value={item.characterName}
-                />
-              ))}
-              <WorldCharacter src={"/icons/character_add.svg"} value={"추가"} />
-            </WorldStyled.CharacterList>
-            <WorldStyled.WorldGapList>
-              {mockupData.worlds.data.map((item) => (
-                <WorldCard key={item.worldId} data={item} />
-              ))}
-              <CreateWorld />
-            </WorldStyled.WorldGapList>
-          </WorldStyled.Container>
-          {/* <Theme.Light></Theme.Light> */}
-        </Layout.FlexColumn>
+        <PopularWorldStyled.Container>
+          <Header></Header>
+          <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
+            실시간 인기 세계관
+          </Text>
+          <PopularWorldStyled.WorldGapList>
+            {mockupData.worlds.data.map((item) => (
+              <WorldCard key={item.worldId} data={item} />
+            ))}
+          </PopularWorldStyled.WorldGapList>
+        </PopularWorldStyled.Container>
       </Layout.Mobile>
-    </WorldStyled.LWrapper>
+    </PopularWorldStyled.LWrapper>
   );
 }
 
-const WorldStyled = {
+const PopularWorldStyled = {
   LWrapper: styled(Layout.Wrapper)`
     overflow-y: scroll;
   `,
-  Container: styled.div`
-    padding: 24px;
-  `,
   WorldGapList: styled.div`
+    width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 16px;
   `,
-  CharacterList: styled.div`
+  Container: styled.div`
+    padding: 24px;
     display: flex;
-    column-gap: 16px;
-    margin-bottom: 16px;
+    flex-direction: column;
+    row-gap: 8px;
   `,
+  Title: styled(Text)``,
 };
