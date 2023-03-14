@@ -5,10 +5,12 @@ import { Layout } from "@/styled/layout";
 import styled from "@emotion/styled";
 
 import { Button } from "@/styled/button";
+import { TopBar } from "@/app/components/onboard/TopBar";
+import { StartOnBoard } from "@/app/components/onboard/Start.Onboard";
 
-import { TopBar } from "../components/onboard/TopBar";
-import { OnBoardContainer } from "../components/onboard/OnBoardContainer";
-import { StartOnBoard } from "../components/onboard/Start.Onboard";
+// import { TopBar } from "../components/onboard/TopBar";
+// import { OnBoardContainer } from "../components/onboard/OnBoardContainer";
+// import { StartOnBoard } from "../components/onboard/Start.Onboard";
 
 export default function OnBoard() {
   return (

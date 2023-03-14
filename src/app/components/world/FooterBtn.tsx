@@ -1,17 +1,20 @@
 import { ColorType } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 type Props = {
   subTitle?: string | false;
   error?: boolean;
   children: React.ReactNode;
+  href?: string;
 };
 
 export const FooterBtn: React.FC<Props> = ({
   subTitle,
   error = false,
   children,
+  href = "/",
 }) => {
   return (
     <Footer>
@@ -24,9 +27,11 @@ export const FooterBtn: React.FC<Props> = ({
         </SubTitle>
       )}
       <Button>
-        <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
-          {children}
-        </Text>
+        <Link href={href}>
+          <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
+            {children}
+          </Text>
+        </Link>
       </Button>
     </Footer>
   );

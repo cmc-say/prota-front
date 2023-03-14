@@ -1,4 +1,5 @@
 "use client";
+
 import styled from "@emotion/styled";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
