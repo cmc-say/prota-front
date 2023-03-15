@@ -1,9 +1,11 @@
 import {
+  AddMultipleHashtagsReq,
   CreateWorldReq,
+  DeleteMultipleHashtagsReq,
   DeleteWorldReq,
+  EditWorldInfoReq,
   GetAllWorldListReq,
   GetWorldInfoReq,
-  ReIssueRes,
   SearchWorldReq,
   UpdateWorldImgReq,
 } from "./network";
@@ -35,7 +37,11 @@ export default class WorldAPIService extends APINetworkService {
     data.append("file", req.file);
     axiosMediaInstance.post(`/world${req.worldId}/img`, data);
   }
-  getWorldAttendances() {}
+  async EditWorldInfoReq(req: EditWorldInfoReq) {
+    const res = await axiosinstance.put(`/world/${req.worldId}/info}`);
+    return res.data;
+  }
+
   async getAllWorlds(req: GetAllWorldListReq) {
     const res = await axiosinstance.get(`/world/?order=${req.type}`);
     return res.data;
@@ -59,6 +65,20 @@ export default class WorldAPIService extends APINetworkService {
   async searchWorld(req: SearchWorldReq) {
     const res = await axiosinstance.get(`/world/search?keyword=${req.keyword}`);
     return res.data;
+  }
+
+  async addMultipleHashtags(req: AddMultipleHashtagsReq) {
+    const res = await axiosinstance.post(`/world/${req.worldId}}/hashtags`, {
+      hashtags: req.hashtags,
+    });
+    return res.data;
+  }
+
+  async deleteMultipleHashtags(req: DeleteMultipleHashtagsReq) {
+    // const res = await axiosinstance.delete(`/world/${req.worldId}}/hashtags`, {
+    //   worldHashtagIds: req.worldHashtagIds,
+    // });
+    // return res.data;
   }
   async getRecommendedWorld() {
     const res = await axiosinstance.post("/world/recommended");

@@ -9,6 +9,7 @@ import {
   ParticipateWorldReq,
   UpdateCharacterImgReq,
   EditCharacterInfoReq,
+  GetTodayWordReq,
 } from "./network";
 import {
   APINetworkService,
@@ -19,6 +20,10 @@ import {
 export default class CharacterAPIService extends APINetworkService {
   async getCharacterInfo(req: GetCharacterInfoReq) {
     const res = await axiosinstance.get(`/avatar/${req.avatarId}`);
+    return res.data;
+  }
+  async getAllCharacterWorlds(req: GetCharacterInfoReq) {
+    const res = await axiosinstance.get(`/avatar/${req.avatarId}/worlds`);
     return res.data;
   }
   async addCharacter(req: AddCharacterReq): Promise<AddCharacterRes> {
@@ -46,16 +51,17 @@ export default class CharacterAPIService extends APINetworkService {
     return res.data;
   }
 
-  updateCharacterImg(req: UpdateCharacterImgReq) {
+  async updateCharacterImg(req: UpdateCharacterImgReq) {
     const data = new FormData();
     data.append("file", req.file);
-    axiosMediaInstance.post(`/avatar/${req.avatarId}/img`, data);
+    await axiosMediaInstance.post(`/avatar/${req.avatarId}/img`, data);
   }
-  getCharacterProgress() {}
+
   async deleteCharacter(req: DeleteCharacterReq) {
     const res = await axiosinstance.delete(`/avatar/${req.avatarId}`);
     return res.data;
   }
+
   async participateToWorld(req: ParticipateWorldReq) {
     const res = await axiosinstance.post(
       `/avatar/${req.avatarId}/world/${req.worldId}`
@@ -80,6 +86,14 @@ export default class CharacterAPIService extends APINetworkService {
     );
     return res.data;
   }
+
+  async checkTodoChecked(req: ParticipateWorldReq) {
+    const res = await axiosinstance.get(
+      `/avatar/${req.avatarId}/world/${req.worldId}/todos`
+    );
+    return res.data;
+  }
+
   async createWorldToday(req: CreateWordTodayReq) {
     const res = await axiosinstance.post(
       `/avatar/${req.avatarId}/world/${req.worldId}/wordtoday`,
@@ -89,12 +103,14 @@ export default class CharacterAPIService extends APINetworkService {
     );
     return res.data;
   }
-  async getWorldToday(req: CreateWordTodayReq) {
+
+  async getWordToday(req: GetTodayWordReq) {
     const res = await axiosinstance.get(
-      `/avatar/${req.avatarId}/world/${req.worldId}/wordtoday`
+      `/avatar/${req.avatarId}/world/${req.worldId}/wordtoday/${req.wordTodayId}`
     );
     return res.data;
   }
+
   async getAllWorldTodos(req: GetCharacterInfoReq) {
     const res = await axiosinstance.get(`/avatar/${req.avatarId}/todo/month`);
     return res.data;

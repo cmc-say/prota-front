@@ -17,18 +17,18 @@ export type DeleteUserReq = {};
 export type DeleteUserRes = {};
 
 export type ReportUserReq = {
-  userId: string;
+  userId: number;
   reportType: string;
 };
 export type ReportUserRes = {};
 
 export type BlockUserReq = {
-  userId: string;
+  userId: number;
 };
 export type BlockUserRes = {};
 
 export type CheckCharacterExistReq = {
-  worldId: string;
+  worldId: number;
 };
 export type CheckCharacterExistRes = {};
 
@@ -125,7 +125,11 @@ export type CreateHashTagRes = {};
 export type SearchHashTagReq = {};
 export type SearchHashTagRes = {};
 
-export type GetTodayWordReq = {};
+export type GetTodayWordReq = {
+  avatarId: number;
+  worldId: number;
+  wordTodayId: number;
+};
 export type GetTodayWordRes = {};
 
 export type CreateWordTodayReq = {
@@ -157,4 +161,24 @@ export type UpdateCharacterImgReq = {
 export type UpdateWorldImgReq = {
   worldId: number;
   file: any;
+};
+
+export type EditWorldInfoReq = {
+  worldId: number;
+  worldName: string;
+  worldUserLimit: number;
+  worldStartDate: string;
+  worldEndDate: string;
+  worldNotice: string;
+  worldPassword: string;
+  worldHostUserId: number;
+};
+
+export type AddMultipleHashtagsReq = {
+  worldId: number;
+  hashtags: string[];
+};
+export type DeleteMultipleHashtagsReq = {
+  worldId: number;
+  worldHashtagIds: number[];
 };
