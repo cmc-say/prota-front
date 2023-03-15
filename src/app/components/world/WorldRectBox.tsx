@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Text, TextSizeType } from "@/styled/typography";
 import { ColorType } from "@/styled/color.type";
+import Image from "next/image";
 
 interface WorldBoxProps {
   imageSrc: string;
@@ -10,15 +11,27 @@ interface WorldBoxProps {
 
 export const WorldRectBox: React.FC<WorldBoxProps> = ({ imageSrc, title }) => {
   return (
-    <>
-      <WorldBox imageSrc={imageSrc}>
-        <WorldText color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
-          {title}
-        </WorldText>
-      </WorldBox>
-    </>
+    <Styled.Container>
+      <Styled.WorldBox src={imageSrc} alt="box" width={160} height={160} />
+      <WorldText color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
+        {title}
+      </WorldText>
+    </Styled.Container>
   );
 };
+
+const WorldRectBoxStyled = {
+  Container: styled.div`
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  `,
+  WorldBox: styled(Image)`
+    background-color: ${ColorType.NEUTRAL500};
+  `,
+};
+
+const Styled = WorldRectBoxStyled;
 
 const WorldBox = styled.div<{ imageSrc: string }>`
   background: ${({ imageSrc }) => imageSrc};
@@ -26,7 +39,6 @@ const WorldBox = styled.div<{ imageSrc: string }>`
   width: 160px;
   aspect-ratio: 1 / 1;
   border-radius: 16px;
-  background-color: ${ColorType.NEUTRAL500};
 `;
 
 const WorldText = styled(Text)`

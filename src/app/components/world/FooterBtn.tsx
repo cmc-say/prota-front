@@ -43,6 +43,7 @@ const Footer = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 8px;
+  z-index: 10;
   left: 50%;
   transform: translateX(-50%);
   bottom: 50px;

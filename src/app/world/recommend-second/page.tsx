@@ -4,33 +4,43 @@ import { Header } from "@/app/components/header/Header";
 import { FileUpload } from "@/app/components/onboard/FileUpload";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { InputBox } from "@/app/components/world/InputBox";
+import { SubFooter } from "@/app/components/world/SubFooter";
 import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 
-export default function MakeWorldFirst() {
+export default function RecommendSecond() {
   return (
-    <MakeWorldFirstStyled.LWrapper>
+    <Styled.LWrapper>
       <Layout.Mobile>
-        <MakeWorldFirstStyled.Container>
+        <Styled.Container>
           <Header />
-          <MakeWorldFirstStyled.Title color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
+          <Styled.Title
+            color={ColorType.NEUTRAL00}
+            type={TextSizeType.KR_HEAD_02}
+          >
             세계관 상태를 설정해야해요.
-          </MakeWorldFirstStyled.Title>
+          </Styled.Title>
           <FileUpload />
-          <MakeWorldFirstStyled.InfoForm>
+          <Styled.InfoForm>
             <InputBox placeholder="제목 입력" value="" maxLength={15} />
-            <InputBox placeholder="비밀번호 설정 (선택 사항, 설정 시 비공개 방 생성)" value="" />
-          </MakeWorldFirstStyled.InfoForm>
-          <FooterBtn>다음으로</FooterBtn>
-        </MakeWorldFirstStyled.Container>
+            <InputBox
+              placeholder="비밀번호 설정 (선택 사항, 설정 시 비공개 방 생성)"
+              value=""
+            />
+          </Styled.InfoForm>
+          <SubFooter question="어떤 세계관을 해야할 지 모르겠나요?">
+            세계관 추천 받기 &gt;
+          </SubFooter>
+          <FooterBtn href="/world/recommend-third">다음으로</FooterBtn>
+        </Styled.Container>
       </Layout.Mobile>
-    </MakeWorldFirstStyled.LWrapper>
+    </Styled.LWrapper>
   );
 }
 
-const MakeWorldFirstStyled = {
+const RecommendSecondStyled = {
   LWrapper: styled(Layout.Wrapper)`
     overflow-y: scroll;
   `,
@@ -48,3 +58,5 @@ const MakeWorldFirstStyled = {
     row-gap: 24px;
   `,
 };
+
+const Styled = RecommendSecondStyled;
