@@ -6,16 +6,20 @@ import {
   ReIssueReq,
   ReIssueRes,
 } from "./network";
-import { MockNetworkService } from "./networkCore";
+import {
+  APINetworkService,
+  MockNetworkService,
+  axiosinstance,
+} from "./networkCore";
 
-export default class AuthApiService extends MockNetworkService {
+export default class AuthApiService extends APINetworkService {
   async login(req: LoginReq): Promise<LoginRes> {
-    const res = await this._networkCore.post<LoginRes>();
-    return res;
+    const res = await axiosinstance.post("/auth/login", req);
+    return res.data;
   }
   async logout(req: LogoutReq): Promise<LogoutRes> {
-    const res = await this._networkCore.post<LogoutRes>();
-    return res;
+    const res = await axiosinstance.post("/auth/logout", req);
+    return res.data;
   }
   async reissue(req: ReIssueReq): Promise<ReIssueRes> {
     const res = await this._networkCore.post<ReIssueRes>();

@@ -18,57 +18,34 @@ import {
   ReportUserReq,
   ReportUserRes,
 } from "./network";
-import { MockNetworkService } from "./networkCore";
+import {
+  APINetworkService,
+  MockNetworkService,
+  axiosinstance,
+} from "./networkCore";
 
-export default class UserApiService extends MockNetworkService {
+export default class UserApiService extends APINetworkService {
   async reportUser(req: ReportUserReq): Promise<ReportUserRes> {
-    const res = await this._networkCore.post<ReportUserReq>();
+    const res = await axiosinstance.post(`/user/${req.userId}/report`, {
+      reportType: req.reportType,
+    });
     return res;
   }
 
   async blockUser(req: BlockUserReq): Promise<BlockUserRes> {
-    const res = await this._networkCore.post<BlockUserReq>();
+    const res = await axiosinstance.post(`/user/${req.userId}/block`);
     return res;
   }
 
   async getAllCharacterList({}: GetUserCharactersReq): Promise<GetUserCharacterRes> {
-    const res = await this._networkCore.get<GetUserCharactersReq>();
+    const res = await axiosinstance.get(`/user/avatars`);
     return res;
   }
 
   async isCheckCharacterExist(
     req: CheckCharacterExistReq
   ): Promise<CheckCharacterExistRes> {
-    const res = await this._networkCore.get<CheckCharacterExistReq>();
-    return res;
-  }
-
-  async addCharacter(req: AddCharacterReq): Promise<AddCharacterRes> {
-    const res = await this._networkCore.post<AddCharacterReq>();
-    return res;
-  }
-
-  async updateCharacterImg(
-    req: PostCharacterImgReq
-  ): Promise<PostCharacterImgRes> {
-    const res = await this._networkCore.post<PostCharacterImgReq>();
-    return res;
-  }
-
-  async updateCharacter(
-    req: PutCharacterInfoReq
-  ): Promise<PutCharacterInfoRes> {
-    const res = await this._networkCore.put<PutCharacterInfoReq>();
-    return res;
-  }
-
-  async removeCharacter(req: DeleteCharacterReq): Promise<DeleteCharacterRes> {
-    const res = await this._networkCore.delete<DeleteCharacterReq>();
-    return res;
-  }
-
-  async addTodyComment(req: CreateWordTodayReq): Promise<CreateWordTodayRes> {
-    const res = await this._networkCore.post<CreateWordTodayReq>();
+    const res = await axiosinstance.get(`/user/world/${req.worldId}/is-member`);
     return res;
   }
 }
