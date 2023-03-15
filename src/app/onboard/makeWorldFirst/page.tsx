@@ -15,19 +15,13 @@ export default function MakeWorldFirst() {
       <Layout.Mobile>
         <MakeWorldFirstStyled.Container>
           <Header />
-          <MakeWorldFirstStyled.Title
-            color={ColorType.NEUTRAL00}
-            type={TextSizeType.KR_HEAD_02}
-          >
+          <MakeWorldFirstStyled.Title color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
             세계관 상태를 설정해야해요.
           </MakeWorldFirstStyled.Title>
           <FileUpload />
           <MakeWorldFirstStyled.InfoForm>
             <InputBox placeholder="제목 입력" value="" maxLength={15} />
-            <InputBox
-              placeholder="비밀번호 설정 (선택 사항, 설정 시 비공개 방 생성)"
-              value=""
-            />
+            <InputBox placeholder="비밀번호 설정 (선택 사항, 설정 시 비공개 방 생성)" value="" />
           </MakeWorldFirstStyled.InfoForm>
           <FooterBtn>다음으로</FooterBtn>
         </MakeWorldFirstStyled.Container>

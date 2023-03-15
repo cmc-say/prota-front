@@ -1,7 +1,4 @@
 "use client";
-// import "swiper/swiper.css";
-// import "./swiper.add.css";
-// import "swiper/css/pagination";
 
 import styled from "@emotion/styled";
 import { Layout } from "@/styled/layout";
@@ -9,6 +6,9 @@ import { Text, TextSizeType } from "@/styled/typography";
 import { CharacterCard } from "../components/home/CharacterCard";
 import { css } from "@emotion/css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.css";
+import "./swiper.add.css";
+import "swiper/css/pagination";
 
 import { Pagination } from "swiper";
 import { ColorType } from "@/styled/color.type";
@@ -52,55 +52,28 @@ export default function HomePage() {
                   slidesPerView={1}
                 >
                   <SwiperSlide>
-                    <CharacterCard
-                      index={1}
-                      imageSrc="./"
-                      characterName="사과 농사꾼"
-                      characterDescription="흠 이정도면 잘익었군..."
-                    ></CharacterCard>
+                    <CharacterCard index={1} imageSrc="./" characterName="사과 농사꾼" characterDescription="흠 이정도면 잘익었군..."></CharacterCard>
                   </SwiperSlide>
                   <SwiperSlide>
-                    <CharacterCard
-                      index={2}
-                      imageSrc="./"
-                      characterName="사과 농사꾼 "
-                      characterDescription="흠 이정도면 잘익었군..."
-                    ></CharacterCard>
+                    <CharacterCard index={2} imageSrc="./" characterName="사과 농사꾼 " characterDescription="흠 이정도면 잘익었군..."></CharacterCard>
                   </SwiperSlide>
                   <SwiperSlide>
-                    <CharacterCard
-                      index={3}
-                      imageSrc="./"
-                      characterName="사과 농사꾼"
-                      characterDescription="흠 이정도면 잘익었군..."
-                    ></CharacterCard>
+                    <CharacterCard index={3} imageSrc="./" characterName="사과 농사꾼" characterDescription="흠 이정도면 잘익었군..."></CharacterCard>
                   </SwiperSlide>
                 </Swiper>
-                <GraphText
-                  color={ColorType.NEUTRAL00}
-                  type={TextSizeType.KR_SUB_HEAD_01}
-                >
+                <GraphText color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
                   캐릭터 과몰입 그래프
                 </GraphText>
                 <Container>
                   <Background />
-                  <ProgressText
-                    color={ColorType.NEUTRAL300}
-                    type={TextSizeType.KR_CAPTION_01}
-                    percent={percent}
-                  >
+                  <ProgressText color={ColorType.NEUTRAL300} type={TextSizeType.KR_CAPTION_01} percent={percent}>
                     {percent}
                   </ProgressText>
                   <Progress percent={percent} />
                 </Container>
               </>
             ) : (
-              <CheckListCard
-                index={1}
-                imageSrc="./"
-                characterName="사과 농사꾼"
-                characterDescription="흠 이정도면 잘익었군..."
-              ></CheckListCard>
+              <CheckListCard index={1} imageSrc="./" characterName="사과 농사꾼" characterDescription="흠 이정도면 잘익었군..."></CheckListCard>
             )}
           </Layout.FlexColumn>
         </Layout.Mobile>
