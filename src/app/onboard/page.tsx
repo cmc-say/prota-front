@@ -7,50 +7,51 @@ import { Header } from "../components/header/Header";
 import Image from "next/image";
 import { FooterBtn } from "../components/world/FooterBtn";
 
-export default function CreateWorld() {
+export default function OnBoard() {
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
           <Header />
-          <Styled.Icon src={"/icons/create_star.svg"} alt="star" width={64} height={64} />
+          <Styled.TitleIcon src={"/icons/PROTA.svg"} alt="PROTA" width={133} height={21} />
           <Styled.Description color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
             지금부터 당신은
             <br />
             <Text color={ColorType.SECONDARY1} type={TextSizeType.KR_HEAD_02}>
-              한 달 동안
+              세계관 속 캐릭터
             </Text>
-            <br />
-            세계관의 주인이 됩니다.
+            가 됩니다.
           </Styled.Description>
           <Styled.DeemText color={ColorType.NEUTRAL100} type={TextSizeType.KR_SUB_HEAD_01}>
-            기간은 딱 한 달! 캐릭터에 열렬히 과몰입하기!
+            캐릭터에 열렬히 과몰입하기!
           </Styled.DeemText>
           <Styled.SubTitleContainer>
-            <Text color={ColorType.TARTIARY1} type={TextSizeType.KR_SUB_HEAD_02}>
-              🤙 기억해주세요!
-            </Text>
+            <Styled.Icon src={"/icons/onboard_star.svg"} alt="star" width={24} height={24} />
             <Styled.SubTitle color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_02}>
-              세계관에 참여하는 모든 멤버들에게 <br />
-              유쾌하고, 재미있고, 기분 좋은 <br />
-              안전한 세계관을 만들어 가요 😉
+              <Text color={ColorType.TARTIARY1} type={TextSizeType.KR_SUB_HEAD_02}>
+                내가 되고 싶은 캐릭터 컨셉
+              </Text>
+              을 잡아요. <br />
+              다른 유저들의 캐릭터와 함께
+              <br />
+              재미있는 체크리스트를 달성해요!
             </Styled.SubTitle>
           </Styled.SubTitleContainer>
-          <FooterBtn href="/world/create-world">세계관 만들기 시작!</FooterBtn>
+          <FooterBtn href="/onboard/makeRecommendFirst">바로 세계관을 만들어볼까요?</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>
   );
 }
 
-const CreateWorldStyled = {
+const OnBoardStyled = {
   LWrapper: styled(Layout.Wrapper)``,
   Container: styled.div`
     padding: 24px;
     display: flex;
     flex-direction: column;
   `,
-  Title: styled(Image)`
+  TitleIcon: styled(Image)`
     margin-top: 113px;
     margin-bottom: 24px;
   `,
@@ -66,9 +67,7 @@ const CreateWorldStyled = {
     row-gap: 8px;
   `,
   SubTitle: styled(Text)``,
-  Icon: styled(Image)`
-    margin: 18px 0 16px;
-  `,
+  Icon: styled(Image)``,
 };
 
-const Styled = CreateWorldStyled;
+const Styled = OnBoardStyled;
