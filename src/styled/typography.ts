@@ -10,6 +10,7 @@ export enum TextSizeType {
   KR_SUB_HEAD_02 = "kr/sub_head_02",
   KR_BODY_01 = "kr/body_01",
   KR_CAPTION_01 = "kr/caption_01",
+  KR_CAPTION_02 = "kr/caption_02",
 }
 
 interface TextProps {
@@ -62,6 +63,12 @@ export const Text = styled.span<TextProps>`
       case TextSizeType.KR_CAPTION_01:
         return css`
           font-weight: 600;
+          font-size: 12px;
+          line-height: 140%;
+        `;
+      case TextSizeType.KR_CAPTION_02:
+        return css`
+          font-weight: 500;
           font-size: 12px;
           line-height: 140%;
         `;

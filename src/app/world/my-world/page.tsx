@@ -8,7 +8,7 @@ import { WorldCharacter } from "../../components/world/WorldCharacter";
 import { CreateWorld } from "../../components/world/CreateWorld";
 import { Theme } from "@/styled/theme";
 
-const mockupData = {
+export const mockupData = {
   characters: {
     status: 200,
     success: true,
@@ -280,11 +280,11 @@ export default function World() {
   const [select, setSelect] = useState(0);
 
   return (
-    <WorldStyled.LWrapper>
+    <Styled.LWrapper>
       <Layout.Mobile>
         <Layout.FlexColumn>
-          <WorldStyled.Container>
-            <WorldStyled.CharacterList>
+          <Styled.Container>
+            <Styled.CharacterList>
               {mockupData.characters.data.map((item) => (
                 <WorldCharacter
                   key={item.characterId}
@@ -293,18 +293,18 @@ export default function World() {
                 />
               ))}
               <WorldCharacter src={"/icons/character_add.svg"} value={"추가"} />
-            </WorldStyled.CharacterList>
-            <WorldStyled.WorldGapList>
+            </Styled.CharacterList>
+            <Styled.WorldGapList>
               {mockupData.worlds.data.map((item) => (
                 <WorldCard key={item.worldId} data={item} />
               ))}
               <CreateWorld />
-            </WorldStyled.WorldGapList>
-          </WorldStyled.Container>
+            </Styled.WorldGapList>
+          </Styled.Container>
           {/* <Theme.Light></Theme.Light> */}
         </Layout.FlexColumn>
       </Layout.Mobile>
-    </WorldStyled.LWrapper>
+    </Styled.LWrapper>
   );
 }
 
@@ -326,3 +326,5 @@ const WorldStyled = {
     margin-bottom: 16px;
   `,
 };
+
+const Styled = WorldStyled;
