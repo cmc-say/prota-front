@@ -12,39 +12,43 @@ interface WorldBoxProps {
 export const WorldRectBox: React.FC<WorldBoxProps> = ({ imageSrc, title }) => {
   return (
     <Styled.Container>
-      <Styled.WorldBox src={imageSrc} alt="box" width={160} height={160} />
-      <WorldText color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
+      {imageSrc ? (
+        <Styled.WorldBox src={imageSrc} alt="box" width={160} height={160} />
+      ) : (
+        <Styled.NoneBox />
+      )}
+      <Styled.WorldText
+        color={ColorType.NEUTRAL00}
+        type={TextSizeType.KR_HEAD_03}
+      >
         {title}
-      </WorldText>
+      </Styled.WorldText>
     </Styled.Container>
   );
 };
 
 const WorldRectBoxStyled = {
   Container: styled.div`
-    border-radius: 16px;
-    overflow: hidden;
     position: relative;
   `,
   WorldBox: styled(Image)`
+    border-radius: 16px;
+  `,
+  NoneBox: styled.div`
     background-color: ${ColorType.NEUTRAL500};
+    width: 160px;
+    height: 160px;
+    border-radius: 16px;
+  `,
+  WorldText: styled(Text)`
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
   `,
 };
 
 const Styled = WorldRectBoxStyled;
-
-const WorldBox = styled.div<{ imageSrc: string }>`
-  background: ${({ imageSrc }) => imageSrc};
-  position: relative;
-  width: 160px;
-  aspect-ratio: 1 / 1;
-  border-radius: 16px;
-`;
-
-const WorldText = styled(Text)`
-  position: absolute;
-  bottom: 12px;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
-`;

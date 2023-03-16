@@ -19,6 +19,8 @@ import { CheckListCard } from "../components/home/CheckListCard";
 import { useRecoilState } from "recoil";
 import { onBoardState } from "../onboard/store/onBoardStore";
 import { TopBar } from "../components/onboard/TopBar";
+import { ProgressBar } from "../components/ProgressBar";
+import { Header } from "../components/header/Header";
 
 export default function HomePage() {
   const [percent, setPercent] = useState<number>(20);
@@ -29,63 +31,99 @@ export default function HomePage() {
   };
 
   return (
-    <>
-      <Layout.Wrapper>
-        <Layout.Mobile>
-          <Layout.FlexColumn>
-            <Theme.Light></Theme.Light>
-            {state}
-            <TopBar></TopBar>
-            <div onClick={handleToggleContainerClick}>
-              <Toggle initialOnOff={isToggleOn}></Toggle>
-            </div>
-            {isToggleOn ? (
-              <>
-                <Swiper
-                  modules={[Pagination]}
-                  className={css`
-                    width: 100%;
-                  `}
-                  pagination={{ clickable: true }}
-                  direction="horizontal"
-                  spaceBetween={0}
-                  slidesPerView={1}
+    <Styled.LWrapper>
+      <Layout.Mobile>
+        <Styled.Container>
+          {/* <Theme.Light></Theme.Light> */}
+          <Header />
+          <div onClick={handleToggleContainerClick}>
+            <Toggle initialOnOff={isToggleOn}></Toggle>
+          </div>
+          {isToggleOn ? (
+            <>
+              <Swiper
+                modules={[Pagination]}
+                className={css`
+                  width: 100%;
+                `}
+                pagination={{ clickable: true }}
+                direction="horizontal"
+                spaceBetween={0}
+                slidesPerView={1.02}
+              >
+                <SwiperSlide>
+                  <CharacterCard
+                    index={1}
+                    imageSrc="./"
+                    characterName="사과 농사꾼"
+                    characterDescription="흠 이정도면 잘익었군..."
+                  ></CharacterCard>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <CharacterCard
+                    index={2}
+                    imageSrc="./"
+                    characterName="사과 농사꾼 "
+                    characterDescription="흠 이정도면 잘익었군..."
+                  ></CharacterCard>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <CharacterCard
+                    index={3}
+                    imageSrc="./"
+                    characterName="사과 농사꾼"
+                    characterDescription="흠 이정도면 잘익었군..."
+                  ></CharacterCard>
+                </SwiperSlide>
+              </Swiper>
+              <Styled.ProgressForm>
+                <GraphText
+                  color={ColorType.NEUTRAL00}
+                  type={TextSizeType.KR_SUB_HEAD_01}
                 >
-                  <SwiperSlide>
-                    <CharacterCard index={1} imageSrc="./" characterName="사과 농사꾼" characterDescription="흠 이정도면 잘익었군..."></CharacterCard>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <CharacterCard index={2} imageSrc="./" characterName="사과 농사꾼 " characterDescription="흠 이정도면 잘익었군..."></CharacterCard>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <CharacterCard index={3} imageSrc="./" characterName="사과 농사꾼" characterDescription="흠 이정도면 잘익었군..."></CharacterCard>
-                  </SwiperSlide>
-                </Swiper>
-                <GraphText color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
                   캐릭터 과몰입 그래프
                 </GraphText>
-                <Container>
-                  <Background />
-                  <ProgressText color={ColorType.NEUTRAL300} type={TextSizeType.KR_CAPTION_01} percent={percent}>
-                    {percent}
-                  </ProgressText>
-                  <Progress percent={percent} />
-                </Container>
-              </>
-            ) : (
-              <CheckListCard index={1} imageSrc="./" characterName="사과 농사꾼" characterDescription="흠 이정도면 잘익었군..."></CheckListCard>
-            )}
-          </Layout.FlexColumn>
-        </Layout.Mobile>
-      </Layout.Wrapper>
-    </>
+                <ProgressBar percent={percent} />
+              </Styled.ProgressForm>
+            </>
+          ) : (
+            <CheckListCard
+              index={1}
+              imageSrc="./"
+              characterName="사과 농사꾼"
+              characterDescription="흠 이정도면 잘익었군..."
+            ></CheckListCard>
+          )}
+        </Styled.Container>
+      </Layout.Mobile>
+    </Styled.LWrapper>
   );
 }
+
+const HomeStyled = {
+  LWrapper: styled(Layout.Wrapper)``,
+  Container: styled.div`
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+  `,
+  ProgressForm: styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto 0px;
+    row-gap: 8px;
+  `,
+  GraphText: styled(Text)`
+    display: inline-block;
+    /* width: 286px; */
+  `,
+};
+
+const Styled = HomeStyled;
 
 const GraphText = styled(Text)`
   display: inline-block;
   width: 286px;
-  margin: 50px auto 0px;
 `;
 
 const ProgressText = styled(Text)<{ percent: number }>`
