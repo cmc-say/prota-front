@@ -33,7 +33,7 @@ export default function CreateWorldFirst() {
           <SubFooter question="어떤 세계관을 해야할 지 모르겠나요?">
             세계관 추천 받기 &gt;
           </SubFooter>
-          <FooterBtn>다음으로</FooterBtn>
+          <FooterBtn href="/world/create-world-second">다음으로</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

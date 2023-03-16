@@ -2,12 +2,13 @@ import { ColorType } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type Props = {
   subTitle?: string | false;
   error?: boolean;
   children: React.ReactNode;
-  onClick?: () => void;
+  isBack?: boolean;
   href?: string;
 };
 
@@ -15,9 +16,10 @@ export const FooterBtn: React.FC<Props> = ({
   subTitle,
   error = false,
   children,
-  onClick,
+  isBack,
   href = "/",
 }) => {
+  const router = useRouter();
   return (
     <Footer>
       {subTitle && (
@@ -29,8 +31,8 @@ export const FooterBtn: React.FC<Props> = ({
         </SubTitle>
       )}
 
-      {onClick ? (
-        <Button onClick={onClick}>
+      {isBack ? (
+        <Button onClick={() => router.back()}>
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
             {children}
           </Text>

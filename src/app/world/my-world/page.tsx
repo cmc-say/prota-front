@@ -6,7 +6,6 @@ import { WorldCard } from "../../components/world/WorldCard";
 import { Layout } from "@/styled/layout";
 import { WorldCharacter } from "../../components/world/WorldCharacter";
 import { CreateWorld } from "../../components/world/CreateWorld";
-import { Theme } from "@/styled/theme";
 
 export const mockupData = {
   characters: {
@@ -301,7 +300,6 @@ export default function World() {
               <CreateWorld />
             </Styled.WorldGapList>
           </Styled.Container>
-          {/* <Theme.Light></Theme.Light> */}
         </Layout.FlexColumn>
       </Layout.Mobile>
     </Styled.LWrapper>

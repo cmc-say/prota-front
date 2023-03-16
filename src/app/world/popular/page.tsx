@@ -14,13 +14,13 @@ const mockupData = {
     message: "정보 조회 성공",
     data: [
       {
-        characterId: 1,
+        avatarId: 1,
         characterName: "steve_jobs",
         characterImg: "/icons/steve_jobs.svg",
         characterMessage: "캐릭터 상태메세지",
       },
       {
-        characterId: 2,
+        avatarId: 2,
         characterName: "masterpiece",
         characterImg: "/icons/masterpiece.svg",
         characterMessage: "캐릭터 상태메세지",

@@ -25,10 +25,10 @@ export class User {
   }
 
   updateCharacter(character: Character) {
-    const updateCharacterId = this.characterList.findIndex(
+    const updateavatarId = this.characterList.findIndex(
       (c) => !c.isEqualTo(character)
     );
-    this.characterList.splice(updateCharacterId, 0, character);
+    this.characterList.splice(updateavatarId, 0, character);
   }
 
   removeCharacter(character: Character) {

@@ -26,7 +26,7 @@ export default function MakeCharacterOnBoard() {
               maxLength={30}
             />
           </Styled.Description>
-          <FooterBtn>캐릭터 생성 완료!</FooterBtn>
+          <FooterBtn href="/home">캐릭터 생성 완료!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

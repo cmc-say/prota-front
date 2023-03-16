@@ -61,7 +61,7 @@ export default function CreateWorldFour() {
           <SubFooter question="세계관의 캐릭터를 새로 만들래요">
             캐릭터 만들러가기 &gt;
           </SubFooter>
-          <FooterBtn>세계관 시작하기!</FooterBtn>
+          <FooterBtn href="/world/1">세계관 시작하기!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

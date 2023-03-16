@@ -12,7 +12,10 @@ export default function WordToday() {
           <Container>
             <Header></Header>
             <TextBox placeholder="내일도 열심히 해야지~" />
-            <FooterBtn subTitle="내가 참여한 세계관에 오늘의 한 마디가 보여집니다.">
+            <FooterBtn
+              isBack={true}
+              subTitle="내가 참여한 세계관에 오늘의 한 마디가 보여집니다."
+            >
               작성 완료했어요!
             </FooterBtn>
           </Container>

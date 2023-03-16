@@ -7,6 +7,7 @@ import { InputBox } from "@/app/components/world/InputBox";
 import { TextArea } from "@/app/components/world/TextArea";
 import { Layout } from "@/styled/layout";
 import styled from "@emotion/styled";
+
 import React from "react";
 
 export default function HomeCharacterEdit() {
@@ -24,7 +25,7 @@ export default function HomeCharacterEdit() {
               maxLength={30}
             />
           </Styled.Description>
-          <FooterBtn>캐릭터 수정 완료!</FooterBtn>
+          <FooterBtn isBack={true}>캐릭터 수정 완료!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

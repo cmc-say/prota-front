@@ -66,7 +66,10 @@ export default function WorldDetail() {
             />
           </CheckListCharacter>
         </Container>
-        <FooterBtn subTitle="체크리스트를 완료하고, 오늘의 한 마디를 작성하세요!">
+        <FooterBtn
+          href="/world/1/wordToday"
+          subTitle="체크리스트를 완료하고, 오늘의 한 마디를 작성하세요!"
+        >
           오늘의 한 마디 작성할래요!
         </FooterBtn>
       </Layout.Mobile>

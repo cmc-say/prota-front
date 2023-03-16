@@ -1,6 +1,7 @@
 import { ColorType, OpacityHex } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import React from "react";
 
 interface CharacterCardProps {
@@ -43,7 +44,9 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
       >
         세계관으로 이동 {`>`}
       </TextWrapper.RouteText>
-      <CardEditContainer></CardEditContainer>
+      <Link href={"/home/1/edit"}>
+        <CardEditContainer></CardEditContainer>
+      </Link>
     </CardContainer>
   );
 };
