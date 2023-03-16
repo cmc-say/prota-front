@@ -13,8 +13,16 @@ export default function OnBoard() {
       <Layout.Mobile>
         <Styled.Container>
           <Header />
-          <Styled.TitleIcon src={"/icons/PROTA.svg"} alt="PROTA" width={133} height={21} />
-          <Styled.Description color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
+          <Styled.TitleIcon
+            src={"/icons/PROTA.svg"}
+            alt="PROTA"
+            width={133}
+            height={21}
+          />
+          <Styled.Description
+            color={ColorType.NEUTRAL00}
+            type={TextSizeType.KR_HEAD_02}
+          >
             지금부터 당신은
             <br />
             <Text color={ColorType.SECONDARY1} type={TextSizeType.KR_HEAD_02}>
@@ -22,13 +30,27 @@ export default function OnBoard() {
             </Text>
             가 됩니다.
           </Styled.Description>
-          <Styled.DeemText color={ColorType.NEUTRAL100} type={TextSizeType.KR_SUB_HEAD_01}>
+          <Styled.DeemText
+            color={ColorType.NEUTRAL100}
+            type={TextSizeType.KR_SUB_HEAD_01}
+          >
             캐릭터에 열렬히 과몰입하기!
           </Styled.DeemText>
           <Styled.SubTitleContainer>
-            <Styled.Icon src={"/icons/onboard_star.svg"} alt="star" width={24} height={24} />
-            <Styled.SubTitle color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_02}>
-              <Text color={ColorType.TARTIARY1} type={TextSizeType.KR_SUB_HEAD_02}>
+            <Styled.Icon
+              src={"/icons/onboard_star.svg"}
+              alt="star"
+              width={24}
+              height={24}
+            />
+            <Styled.SubTitle
+              color={ColorType.NEUTRAL00}
+              type={TextSizeType.KR_SUB_HEAD_02}
+            >
+              <Text
+                color={ColorType.TARTIARY1}
+                type={TextSizeType.KR_SUB_HEAD_02}
+              >
                 내가 되고 싶은 캐릭터 컨셉
               </Text>
               을 잡아요. <br />
@@ -37,7 +59,9 @@ export default function OnBoard() {
               재미있는 체크리스트를 달성해요!
             </Styled.SubTitle>
           </Styled.SubTitleContainer>
-          <FooterBtn href="/onboard/makeRecommendFirst">바로 세계관을 만들어볼까요?</FooterBtn>
+          <FooterBtn href="/onboard/make-recommend-first">
+            바로 세계관을 만들어볼까요?
+          </FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

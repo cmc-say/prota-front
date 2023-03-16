@@ -53,7 +53,7 @@ export default function MakeRecommendSecond() {
             직접 체크리스트를 만들어 볼 수 있어요!
           </Styled.SubTitle>
           <AddCheckList />
-          <FooterBtn href="/onboard/makeRecommendThird">다음으로</FooterBtn>
+          <FooterBtn href="/onboard/make-recommend-third">다음으로</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

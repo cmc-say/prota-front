@@ -1,67 +1,39 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { FileUpload } from "@/app/components/onboard/FileUpload";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
+import { InputBox } from "@/app/components/world/InputBox";
 import { TextArea } from "@/app/components/world/TextArea";
 import { Button } from "@/styled/button";
 import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
-import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 import React from "react";
 
-export default function ThirdOnBoard() {
+export default function MakeCharacterOnBoard() {
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header></Header>
-          <Styled.Title
-            color={ColorType.NEUTRAL00}
-            type={TextSizeType.KR_HEAD_02}
-          >
-            세계관에 생명을 불어넣는
-            <br /> 마지막 한 순간~!
-          </Styled.Title>
-          <Styled.Form>
-            <Text
-              color={ColorType.NEUTRAL00}
-              type={TextSizeType.KR_SUB_HEAD_01}
-            >
-              메인 소개글을 만들어주세요!
-            </Text>
+          <Header />
+          <FileUpload />
+          <Styled.Description>
+            <InputBox placeholder="캐릭터 이름" value={""} maxLength={6} />
             <TextArea
-              placeholder="세계관 멤버들은 내 세계관의 법을 따라야해요. 공지사항 및 세계관 설명을 적어주세요~!"
               value=""
-              maxLength={50}
-            />
-          </Styled.Form>
-          <Styled.Form>
-            <Text
-              color={ColorType.NEUTRAL00}
-              type={TextSizeType.KR_SUB_HEAD_01}
-            >
-              짧게 설명하는 해시태그를 만들어주세요!
-            </Text>
-            <TextArea
-              placeholder="#미라클모닝 #명화 #빡세게"
-              value=""
+              placeholder="캐릭터 상태 메시지"
               maxLength={30}
             />
-          </Styled.Form>
-          <FooterBtn
-            href="/onboard/makeCharacter"
-            subTitle="세계관을 만들 준비가 끝났나요?"
-          >
-            이제 캐릭터를 만들어봐요!
-          </FooterBtn>
+          </Styled.Description>
+          <FooterBtn>캐릭터 생성 완료!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>
   );
 }
 
-const MakeRecommendThirdStyled = {
+const MakeCharacterStyled = {
   LWrapper: styled(Layout.Wrapper)`
     overflow-y: scroll;
   `,
@@ -70,18 +42,14 @@ const MakeRecommendThirdStyled = {
     display: flex;
     flex-direction: column;
   `,
-  Title: styled(Text)`
-    margin-bottom: 32px;
-  `,
-  Form: styled.div`
+  Description: styled.div`
     display: flex;
     flex-direction: column;
-    row-gap: 8px;
-    margin-bottom: 16px;
+    row-gap: 24px;
   `,
 };
 
-const Styled = MakeRecommendThirdStyled;
+const Styled = MakeCharacterStyled;
 
 const RecommenedCheckListContainer = styled.div`
   display: flex;
@@ -112,21 +80,6 @@ const CheckListButton = styled(Button)<{ isSelected: boolean }>`
 
   border: 1px solid ${ColorType.NEUTRAL500};
   border-radius: 999px;
-`;
-
-const InputBox = styled.input`
-  width: 100%;
-  color: white;
-  margin-top: 8px;
-  height: 50px;
-  padding: 10px;
-  background: transparent;
-  border: 1px solid ${ColorType.NEUTRAL500};
-  border-radius: 8px;
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 const MakeCheckListButton = styled(Button)`

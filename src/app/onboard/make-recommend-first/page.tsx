@@ -45,7 +45,7 @@ export default function FirstOnBoard() {
               </Link>
             </Styled.DIYBottomButton>
             <Styled.SelectedBottomButton>
-              <Link href={"/onboard/makeRecommendSecond"}>
+              <Link href={"/onboard/make-recommend-second"}>
                 <Text
                   color={ColorType.NEUTRAL00}
                   type={TextSizeType.KR_SUB_HEAD_01}
