@@ -28,21 +28,25 @@ export const FooterBtn: React.FC<Props> = ({
           {subTitle}
         </SubTitle>
       )}
-      <Button
-        onClick={(event) => {
-          if (!onClick) {
-            return;
-          }
-          event.stopPropagation();
-          onClick();
-        }}
-      >
-        <Link href={href}>
+
+      {onClick ? (
+        <Button onClick={onClick}>
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
             {children}
           </Text>
-        </Link>
-      </Button>
+        </Button>
+      ) : (
+        <Button>
+          <Link href={href}>
+            <Text
+              color={ColorType.NEUTRAL00}
+              type={TextSizeType.KR_SUB_HEAD_01}
+            >
+              {children}
+            </Text>
+          </Link>
+        </Button>
+      )}
     </Footer>
   );
 };
