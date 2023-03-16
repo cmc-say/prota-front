@@ -9,6 +9,7 @@ type Props = {
   error?: boolean;
   children: React.ReactNode;
   isBack?: boolean;
+  popStack?: number;
   href?: string;
 };
 
@@ -17,6 +18,7 @@ export const FooterBtn: React.FC<Props> = ({
   error = false,
   children,
   isBack,
+  popStack,
   href = "/",
 }) => {
   const router = useRouter();
@@ -38,7 +40,19 @@ export const FooterBtn: React.FC<Props> = ({
           </Text>
         </Button>
       ) : (
-        <Button>
+        <Button
+          onClick={() => {
+            if (!popStack) {
+              return;
+            }
+            setTimeout(() => {
+              router.replace(href);
+            }, 100);
+            for (let index = 0; index < popStack; index++) {
+              router.back();
+            }
+          }}
+        >
           <Link href={href}>
             <Text
               color={ColorType.NEUTRAL00}
