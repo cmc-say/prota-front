@@ -7,6 +7,7 @@ type Props = {
   subTitle?: string | false;
   error?: boolean;
   children: React.ReactNode;
+  onClick?: () => void;
   href?: string;
 };
 
@@ -14,6 +15,7 @@ export const FooterBtn: React.FC<Props> = ({
   subTitle,
   error = false,
   children,
+  onClick,
   href = "/",
 }) => {
   return (
@@ -26,7 +28,15 @@ export const FooterBtn: React.FC<Props> = ({
           {subTitle}
         </SubTitle>
       )}
-      <Button>
+      <Button
+        onClick={(event) => {
+          if (!onClick) {
+            return;
+          }
+          event.stopPropagation();
+          onClick();
+        }}
+      >
         <Link href={href}>
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
             {children}
