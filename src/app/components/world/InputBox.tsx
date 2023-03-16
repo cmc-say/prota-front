@@ -4,7 +4,7 @@ import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 
 type Props = {
-  onChange?: (value: string) => void;
+  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   value: string;
   maxLength?: number;
@@ -26,11 +26,7 @@ export const InputBox: React.FC<Props> = ({
         </Label>
       )}
       <Relative>
-        <Input
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => onChange && onChange(e.target.value)}
-        />
+        <Input placeholder={placeholder} value={value} onChange={onChange} />
         {maxLength && (
           <TextLength
             type={TextSizeType.KR_BODY_01}

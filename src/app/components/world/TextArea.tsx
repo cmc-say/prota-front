@@ -6,16 +6,22 @@ type Props = {
   value: string;
   maxLength?: number;
   placeholder?: string;
+  onChange?: (text: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
 export const TextArea: React.FC<Props> = ({
+  onChange,
   value,
   maxLength,
   placeholder = "",
 }) => {
   return (
     <Styled.Container>
-      <Styled.TextBox placeholder={placeholder}></Styled.TextBox>
+      <Styled.TextBox
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+      ></Styled.TextBox>
       {maxLength && (
         <Styled.Count>
           {value.length}/{maxLength}

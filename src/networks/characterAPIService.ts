@@ -31,7 +31,7 @@ export default class CharacterAPIService extends APINetworkService {
 
     const formData = JSON.stringify({
       avatarName: req.avatarName,
-      avatarId: req.avatarMessage,
+      avatarMessage: req.avatarMessage,
     });
 
     data.append("file", req.file);
