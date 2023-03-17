@@ -33,6 +33,7 @@ const AlarmStyled = {
     height: 9px;
     border-radius: 50%;
     background: ${ColorType.TARTIARY1};
+    color: ${ColorType.NEUTRAL00};
     position: absolute;
     top: 4px;
     right: -1px;

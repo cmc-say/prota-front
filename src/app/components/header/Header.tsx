@@ -1,5 +1,7 @@
 "use client";
 
+import { ColorType } from "@/styled/color.type";
+import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 import { useRouter } from "next/navigation";
 
@@ -18,8 +20,6 @@ export const Header: React.FC<Props> = ({
 }) => {
   const router = useRouter();
 
-  console.log(search);
-
   const backClick = () => {
     router.back();
   };
@@ -35,7 +35,11 @@ export const Header: React.FC<Props> = ({
       ) : (
         <Styled.Blank></Styled.Blank>
       )}
-      <Styled.Children search={search}>{children}</Styled.Children>
+      <Styled.Children search={search}>
+        <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
+          {children}
+        </Text>
+      </Styled.Children>
       {action ? action : <Styled.Blank></Styled.Blank>}
     </Styled.Container>
   );
@@ -60,10 +64,7 @@ const NavStyled = {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-    `}/* position: absolute;
-    left: 50%;
-    transform: translateX(-50%); */
-    /* flex: 1 1 auto; */
+    `}
   `,
   Blank: styled.div``,
 };
