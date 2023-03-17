@@ -40,7 +40,7 @@ const TextAreaStyled = {
     width: 100%;
     height: 144px;
     resize: none;
-    color: #efefef;
+    color: ${ColorType.NEUTRAL00};
     font-family: "Pretendard";
     font-weight: 500;
     font-size: 14px;

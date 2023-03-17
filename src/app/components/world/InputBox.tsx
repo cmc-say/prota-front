@@ -68,6 +68,7 @@ const Input = styled.input`
   height: 50px;
 
   border: 1px solid #2f354a;
+  color: ${ColorType.NEUTRAL00};
   border-radius: 8px;
 
   flex: none;
