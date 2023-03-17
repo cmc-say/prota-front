@@ -12,7 +12,9 @@ export default function WorldNotice() {
     <Layout.Wrapper>
       <Layout.Mobile>
         <WorldNoticeStyled.Container>
-          <Header></Header>
+          <Header back action={<img src="/icons/declaration_btn.svg" />}>
+            명화가 살아있다 14
+          </Header>
           <WorldNoticeStyled.TextBox />
           <CheckBoxForm>
             <WorldNoticeStyled.EditForm>

@@ -8,6 +8,7 @@ import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 type Props = {
   params: {
@@ -20,7 +21,16 @@ export default function MyCharacterWorld({ params: { characterID } }: Props) {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header
+            back
+            action={
+              <Link href={"/mypage/app-setting"}>
+                <Styled.MenuIcon src="/icons/menu_btn.svg" alt="menu" />
+              </Link>
+            }
+          >
+            대머리
+          </Header>
           <Styled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_03}
@@ -65,6 +75,10 @@ const MyCharacterWorldStyled = {
     display: flex;
     flex-direction: column;
     row-gap: 16px;
+  `,
+  MenuIcon: styled.img`
+    width: 24px;
+    height: 24px;
   `,
 };
 

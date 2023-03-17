@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Pagination } from "@/app/components/header/Pagination";
 import { FileUpload } from "@/app/components/onboard/FileUpload";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { InputBox } from "@/app/components/world/InputBox";
@@ -15,14 +16,14 @@ export default function RecommendSecond() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back action={<Pagination selectId={1} />} />
           <Styled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_02}
           >
             세계관 상태를 설정해야해요.
           </Styled.Title>
-          <FileUpload />
+          <FileUpload setValue={() => {}} />
           <Styled.InfoForm>
             <InputBox placeholder="제목 입력" value="" maxLength={15} />
             <InputBox

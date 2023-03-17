@@ -12,7 +12,7 @@ export default function HomeAlarm() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back>알림</Header>
           <Styled.AlarmForm>
             <Alarm />
           </Styled.AlarmForm>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Pagination } from "@/app/components/header/Pagination";
 import { AddCheckList } from "@/app/components/onboard/AddCheckList";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { Button } from "@/styled/button";
@@ -15,7 +16,7 @@ export default function MakeRecommendSecond() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back action={<Pagination selectId={2} />} />
           <Styled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_02}

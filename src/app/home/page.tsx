@@ -21,6 +21,8 @@ import { onBoardState } from "../onboard/store/onBoardStore";
 import { TopBar } from "../components/onboard/TopBar";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/header/Header";
+import Link from "next/link";
+import { AlarmDot } from "../components/home/AlarmDot";
 
 export default function HomePage() {
   const [percent, setPercent] = useState<number>(20);
@@ -35,7 +37,7 @@ export default function HomePage() {
       <Layout.Mobile>
         <Styled.Container>
           {/* <Theme.Light></Theme.Light> */}
-          <Header />
+          <Header action={<AlarmDot href="/home/alarm" />} />
           <div onClick={handleToggleContainerClick}>
             <Toggle initialOnOff={isToggleOn}></Toggle>
           </div>

@@ -7,6 +7,7 @@ import { InputBox } from "@/app/components/world/InputBox";
 import { TextArea } from "@/app/components/world/TextArea";
 import { Layout } from "@/styled/layout";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 import React from "react";
 
@@ -15,8 +16,10 @@ export default function HomeCharacterEdit() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
-          <FileUpload />
+          <Header back action={<img src="/icons/delete_btn.svg" />}>
+            캐릭터 수정
+          </Header>
+          {/* <FileUpload /> */}
           <Styled.Description>
             <InputBox placeholder="캐릭터 이름" value={""} maxLength={6} />
             <TextArea

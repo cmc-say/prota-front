@@ -9,13 +9,14 @@ import { WorldRectBox } from "@/app/components/world/WorldRectBox";
 import { Layout } from "@/styled/layout";
 import { Header } from "@/app/components/header/Header";
 import Link from "next/link";
+import { Pagination } from "@/app/components/header/Pagination";
 
 export default function FirstOnBoard() {
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back action={<Pagination selectId={1} />} />
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
             세계관 추천 목록이에요.
           </Text>

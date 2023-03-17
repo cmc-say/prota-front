@@ -13,6 +13,8 @@ import {
   AtomCharacters,
   AtomSelectedCharacterIdState,
 } from "@/app/atoms/atom";
+import { Header } from "@/app/components/header/Header";
+import Link from "next/link";
 
 export const mockupData = {
   characters: {
@@ -96,26 +98,26 @@ export const mockupData = {
       },
       {
         worldId: 2,
-        worldName: "세계관 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
+        worldName: "탈모 방지 위원회",
+        worldUserLimit: 13,
+        worldImg: "/icons/명화2.svg",
         worldStartDate: "2023-02-21T00:00:00",
         worldEndDate: "2023-03-21T00:00:00",
         hashtags: [
           {
             worldHashtagId: 1,
             hashtagId: 1,
-            hashtagName: "해시태그1",
+            hashtagName: "탈모",
           },
           {
             worldHashtagId: 2,
             hashtagId: 2,
-            hashtagName: "해시태그2",
+            hashtagName: "풍성한 머리",
           },
           {
             worldHashtagId: 3,
             hashtagId: 3,
-            hashtagName: "해시태그3",
+            hashtagName: "미라클",
           },
         ],
         worldHostUserId: 1,
@@ -136,156 +138,6 @@ export const mockupData = {
             worldAvatarId: 4,
             worldId: 1,
             avatarId: 3,
-          },
-        ],
-      },
-      {
-        worldId: 3,
-        worldName: "세계관 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 1,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 2,
-            hashtagId: 2,
-            hashtagName: "해시태그2",
-          },
-          {
-            worldHashtagId: 3,
-            hashtagId: 3,
-            hashtagName: "해시태그3",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 1,
-            worldId: 1,
-            avatarId: 1,
-          },
-          {
-            worldAvatarId: 3,
-            worldId: 1,
-            avatarId: 2,
-          },
-          {
-            worldAvatarId: 4,
-            worldId: 1,
-            avatarId: 3,
-          },
-        ],
-      },
-      {
-        worldId: 4,
-        worldName: "세계관 둘 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 4,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 4,
-            hashtagId: 5,
-            hashtagName: "해시태그4",
-          },
-          {
-            worldHashtagId: 5,
-            hashtagId: 6,
-            hashtagName: "해시태그5",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 2,
-            worldId: 2,
-            avatarId: 1,
-          },
-        ],
-      },
-      {
-        worldId: 5,
-        worldName: "세계관 둘 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 4,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 4,
-            hashtagId: 5,
-            hashtagName: "해시태그4",
-          },
-          {
-            worldHashtagId: 5,
-            hashtagId: 6,
-            hashtagName: "해시태그5",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 2,
-            worldId: 2,
-            avatarId: 1,
-          },
-        ],
-      },
-      {
-        worldId: 6,
-        worldName: "세계관 둘 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 4,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 4,
-            hashtagId: 5,
-            hashtagName: "해시태그4",
-          },
-          {
-            worldHashtagId: 5,
-            hashtagId: 6,
-            hashtagName: "해시태그5",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 2,
-            worldId: 2,
-            avatarId: 1,
           },
         ],
       },
@@ -382,6 +234,7 @@ const WorldStyled = {
     column-gap: 16px;
     margin-bottom: 16px;
   `,
+  SearchIcon: styled.img``,
 };
 
 const Styled = WorldStyled;

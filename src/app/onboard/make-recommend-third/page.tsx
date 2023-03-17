@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Pagination } from "@/app/components/header/Pagination";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { TextArea } from "@/app/components/world/TextArea";
 import { Button } from "@/styled/button";
@@ -15,7 +16,7 @@ export default function ThirdOnBoard() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header></Header>
+          <Header back action={<Pagination selectId={3} />} />
           <Styled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_02}

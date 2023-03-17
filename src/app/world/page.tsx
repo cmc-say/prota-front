@@ -12,9 +12,17 @@ export default function CreateWorld() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
-          <Styled.Icon src={"/icons/create_star.svg"} alt="star" width={64} height={64} />
-          <Styled.Description color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
+          <Header back></Header>
+          <Styled.Icon
+            src={"/icons/create_star.svg"}
+            alt="star"
+            width={64}
+            height={64}
+          />
+          <Styled.Description
+            color={ColorType.NEUTRAL00}
+            type={TextSizeType.KR_HEAD_02}
+          >
             지금부터 당신은
             <br />
             <Text color={ColorType.SECONDARY1} type={TextSizeType.KR_HEAD_02}>
@@ -23,14 +31,23 @@ export default function CreateWorld() {
             <br />
             세계관의 주인이 됩니다.
           </Styled.Description>
-          <Styled.DeemText color={ColorType.NEUTRAL100} type={TextSizeType.KR_SUB_HEAD_01}>
+          <Styled.DeemText
+            color={ColorType.NEUTRAL100}
+            type={TextSizeType.KR_SUB_HEAD_01}
+          >
             기간은 딱 한 달! 캐릭터에 열렬히 과몰입하기!
           </Styled.DeemText>
           <Styled.SubTitleContainer>
-            <Text color={ColorType.TARTIARY1} type={TextSizeType.KR_SUB_HEAD_02}>
+            <Text
+              color={ColorType.TARTIARY1}
+              type={TextSizeType.KR_SUB_HEAD_02}
+            >
               🤙 기억해주세요!
             </Text>
-            <Styled.SubTitle color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_02}>
+            <Styled.SubTitle
+              color={ColorType.NEUTRAL00}
+              type={TextSizeType.KR_SUB_HEAD_02}
+            >
               세계관에 참여하는 모든 멤버들에게 <br />
               유쾌하고, 재미있고, 기분 좋은 <br />
               안전한 세계관을 만들어 가요 😉

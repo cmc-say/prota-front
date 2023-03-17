@@ -16,7 +16,7 @@ export default function RecommendFirst() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back />
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_02}>
             세계관 추천 목록이에요.
           </Text>

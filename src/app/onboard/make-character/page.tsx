@@ -43,7 +43,7 @@ export default function MakeCharacterOnBoard() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back />
           <FileUpload setValue={setFile} />
           <Styled.Description>
             <InputBox

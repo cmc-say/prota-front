@@ -5,13 +5,14 @@ import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export default function AppSetting() {
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back />
           <Styled.Section>
             <Styled.Title
               color={ColorType.NEUTRAL00}
@@ -19,12 +20,14 @@ export default function AppSetting() {
             >
               앱 설정
             </Styled.Title>
-            <Text
-              color={ColorType.NEUTRAL100}
-              type={TextSizeType.KR_SUB_HEAD_01}
-            >
-              알림 설정
-            </Text>
+            <Link href={"/mypage/app-setting/alarm"}>
+              <Text
+                color={ColorType.NEUTRAL100}
+                type={TextSizeType.KR_SUB_HEAD_01}
+              >
+                알림 설정
+              </Text>
+            </Link>
           </Styled.Section>
           <Styled.Section>
             <Styled.Title

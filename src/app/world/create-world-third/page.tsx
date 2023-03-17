@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Pagination } from "@/app/components/header/Pagination";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { TextArea } from "@/app/components/world/TextArea";
 import { ColorType } from "@/styled/color.type";
@@ -14,7 +15,7 @@ export default function CreateWorldThird() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header></Header>
+          <Header back action={<Pagination selectId={3} />} />
           <Styled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_02}
@@ -52,7 +53,7 @@ export default function CreateWorldThird() {
             href="/world/create-world-four"
             subTitle="세계관을 만들 준비가 끝났나요?"
           >
-            이제 캐릭터를 만들어봐요!
+            캐릭터 고르러 가기!
           </FooterBtn>
         </Styled.Container>
       </Layout.Mobile>

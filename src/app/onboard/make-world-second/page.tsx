@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Pagination } from "@/app/components/header/Pagination";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { InputBox } from "@/app/components/world/InputBox";
 import { ColorType } from "@/styled/color.type";
@@ -13,7 +14,7 @@ export default function MakeWorldTwo() {
     <MakeWorldTwoStyled.LWrapper>
       <Layout.Mobile>
         <MakeWorldTwoStyled.Container>
-          <Header />
+          <Header back action={<Pagination selectId={2} />} />
           <MakeWorldTwoStyled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_02}
@@ -37,7 +38,7 @@ export default function MakeWorldTwo() {
               </Text>
             </MakeWorldTwoStyled.AddCheckList>
           </MakeWorldTwoStyled.InfoForm>
-          <FooterBtn>다음으로</FooterBtn>
+          <FooterBtn href="/onboard/make-recommend-third">다음으로</FooterBtn>
         </MakeWorldTwoStyled.Container>
       </Layout.Mobile>
     </MakeWorldTwoStyled.LWrapper>

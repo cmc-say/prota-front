@@ -21,7 +21,7 @@ export default function CreateWorldFour() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back>캐릭터 선택</Header>
           <Swiper
             modules={[Pagination]}
             className={css`

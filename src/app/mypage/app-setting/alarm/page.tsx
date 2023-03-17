@@ -11,7 +11,7 @@ export default function Alarm() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back>알림 설정</Header>
           <Styled.Section>
             <Styled.Title
               color={ColorType.NEUTRAL00}

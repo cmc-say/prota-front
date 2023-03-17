@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Pagination } from "@/app/components/header/Pagination";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { InputBox } from "@/app/components/world/InputBox";
 import { ColorType } from "@/styled/color.type";
@@ -13,7 +14,7 @@ export default function CreateWorldSecond() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header back action={<Pagination selectId={2} />} />
           <Styled.Title
             color={ColorType.NEUTRAL00}
             type={TextSizeType.KR_HEAD_02}

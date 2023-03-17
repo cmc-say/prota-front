@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "@/app/components/header/Header";
+import { Search } from "@/app/components/world/Search";
 import { TagIcon } from "@/app/components/world/TagIcon";
 import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
@@ -12,7 +13,9 @@ export default function SearchWorld() {
     <SearchWorldStyled.LWrapper>
       <Layout.Mobile>
         <SearchWorldStyled.Container>
-          <Header />
+          <Header search back>
+            <Search />
+          </Header>
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
             #실시간 인기 해시태그
           </Text>

@@ -13,7 +13,9 @@ export default function WorldDetail() {
     <Layout.Wrapper>
       <Layout.Mobile>
         <Container>
-          <Header></Header>
+          <Header back action={<img src="/icons/declaration_btn.svg" />}>
+            명화가 살아있다 14
+          </Header>
           <SubHeader>
             <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_BODY_01}>
               공지사항 & 체크리스트 확인

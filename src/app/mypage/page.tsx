@@ -18,7 +18,16 @@ export default function MyPage() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header />
+          <Header
+            action={
+              <Link href={"/mypage/app-setting"}>
+                <Styled.SettingIcon
+                  src="/icons/setting_btn.svg"
+                  alt="setting"
+                />
+              </Link>
+            }
+          ></Header>
           <Styled.Attainment>
             <Attainment count={12} src="purple">
               달성 세계관
@@ -74,6 +83,10 @@ const MyPageStyled = {
     gap: 8px;
     flex: 1;
     padding-bottom: 120px;
+  `,
+  SettingIcon: styled.img`
+    width: 19px;
+    height: 19px;
   `,
 };
 

@@ -6,6 +6,7 @@ import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 const mockupData = {
   characters: {
@@ -14,15 +15,21 @@ const mockupData = {
     message: "정보 조회 성공",
     data: [
       {
-        avatarId: 1,
-        characterName: "steve_jobs",
-        characterImg: "/icons/steve_jobs.svg",
+        characterId: 0,
+        characterName: "메타몽",
+        characterImg: "/icons/메타몽.svg",
         characterMessage: "캐릭터 상태메세지",
       },
       {
-        avatarId: 2,
-        characterName: "masterpiece",
-        characterImg: "/icons/masterpiece.svg",
+        characterId: 1,
+        characterName: "대머리",
+        characterImg: "/icons/대머리.svg",
+        characterMessage: "캐릭터 상태메세지",
+      },
+      {
+        characterId: 2,
+        characterName: "짱구",
+        characterImg: "/icons/짱구.svg",
         characterMessage: "캐릭터 상태메세지",
       },
     ],
@@ -33,26 +40,31 @@ const mockupData = {
     data: [
       {
         worldId: 1,
-        worldName: "세계관 하나",
+        worldName: "명화가 살아있다.",
         worldUserLimit: 10,
-        worldImg: "url",
+        worldImg: "/icons/명화1.svg",
         worldStartDate: "2023-02-21T00:00:00",
         worldEndDate: "2023-03-21T00:00:00",
         hashtags: [
           {
             worldHashtagId: 1,
             hashtagId: 1,
-            hashtagName: "해시태그1",
+            hashtagName: "명화모임",
           },
           {
             worldHashtagId: 2,
             hashtagId: 2,
-            hashtagName: "해시태그2",
+            hashtagName: "자기관리",
           },
           {
             worldHashtagId: 3,
             hashtagId: 3,
-            hashtagName: "해시태그3",
+            hashtagName: "공부",
+          },
+          {
+            worldHashtagId: 4,
+            hashtagId: 4,
+            hashtagName: "외국어",
           },
         ],
         worldHostUserId: 1,
@@ -78,26 +90,26 @@ const mockupData = {
       },
       {
         worldId: 2,
-        worldName: "세계관 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
+        worldName: "탈모 방지 위원회",
+        worldUserLimit: 13,
+        worldImg: "/icons/명화2.svg",
         worldStartDate: "2023-02-21T00:00:00",
         worldEndDate: "2023-03-21T00:00:00",
         hashtags: [
           {
             worldHashtagId: 1,
             hashtagId: 1,
-            hashtagName: "해시태그1",
+            hashtagName: "탈모",
           },
           {
             worldHashtagId: 2,
             hashtagId: 2,
-            hashtagName: "해시태그2",
+            hashtagName: "풍성한 머리",
           },
           {
             worldHashtagId: 3,
             hashtagId: 3,
-            hashtagName: "해시태그3",
+            hashtagName: "미라클",
           },
         ],
         worldHostUserId: 1,
@@ -118,156 +130,6 @@ const mockupData = {
             worldAvatarId: 4,
             worldId: 1,
             avatarId: 3,
-          },
-        ],
-      },
-      {
-        worldId: 3,
-        worldName: "세계관 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 1,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 2,
-            hashtagId: 2,
-            hashtagName: "해시태그2",
-          },
-          {
-            worldHashtagId: 3,
-            hashtagId: 3,
-            hashtagName: "해시태그3",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 1,
-            worldId: 1,
-            avatarId: 1,
-          },
-          {
-            worldAvatarId: 3,
-            worldId: 1,
-            avatarId: 2,
-          },
-          {
-            worldAvatarId: 4,
-            worldId: 1,
-            avatarId: 3,
-          },
-        ],
-      },
-      {
-        worldId: 4,
-        worldName: "세계관 둘 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 4,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 4,
-            hashtagId: 5,
-            hashtagName: "해시태그4",
-          },
-          {
-            worldHashtagId: 5,
-            hashtagId: 6,
-            hashtagName: "해시태그5",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 2,
-            worldId: 2,
-            avatarId: 1,
-          },
-        ],
-      },
-      {
-        worldId: 5,
-        worldName: "세계관 둘 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 4,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 4,
-            hashtagId: 5,
-            hashtagName: "해시태그4",
-          },
-          {
-            worldHashtagId: 5,
-            hashtagId: 6,
-            hashtagName: "해시태그5",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 2,
-            worldId: 2,
-            avatarId: 1,
-          },
-        ],
-      },
-      {
-        worldId: 6,
-        worldName: "세계관 둘 하나",
-        worldUserLimit: 10,
-        worldImg: "url",
-        worldStartDate: "2023-02-21T00:00:00",
-        worldEndDate: "2023-03-21T00:00:00",
-        hashtags: [
-          {
-            worldHashtagId: 1,
-            hashtagId: 4,
-            hashtagName: "해시태그1",
-          },
-          {
-            worldHashtagId: 4,
-            hashtagId: 5,
-            hashtagName: "해시태그4",
-          },
-          {
-            worldHashtagId: 5,
-            hashtagId: 6,
-            hashtagName: "해시태그5",
-          },
-        ],
-        worldHostUserId: 1,
-        worldNotice: "공지",
-        worldPassword: "123",
-        worldAvatars: [
-          {
-            worldAvatarId: 2,
-            worldId: 2,
-            avatarId: 1,
           },
         ],
       },
@@ -277,21 +139,32 @@ const mockupData = {
 
 export default function PopularWorld() {
   return (
-    <PopularWorldStyled.LWrapper>
+    <Styled.LWrapper>
       <Layout.Mobile>
-        <PopularWorldStyled.Container>
-          <Header></Header>
+        <Styled.Container>
+          <Header
+            action={
+              <Link href={"/world/search"}>
+                <Styled.SearchIcon
+                  src="/icons/search_btn.svg"
+                  width={32}
+                  height={32}
+                  alt="search"
+                />
+              </Link>
+            }
+          />
           <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
-            실시간 인기 세계관
+            실시간 세계관 확인
           </Text>
-          <PopularWorldStyled.WorldGapList>
+          <Styled.WorldGapList>
             {mockupData.worlds.data.map((item) => (
               <WorldCard key={item.worldId} data={item} />
             ))}
-          </PopularWorldStyled.WorldGapList>
-        </PopularWorldStyled.Container>
+          </Styled.WorldGapList>
+        </Styled.Container>
       </Layout.Mobile>
-    </PopularWorldStyled.LWrapper>
+    </Styled.LWrapper>
   );
 }
 
@@ -312,4 +185,7 @@ const PopularWorldStyled = {
     row-gap: 8px;
   `,
   Title: styled(Text)``,
+  SearchIcon: styled.img``,
 };
+
+const Styled = PopularWorldStyled;

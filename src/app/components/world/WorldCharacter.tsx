@@ -4,7 +4,6 @@ import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
-import Image from "next/image";
 
 type Props = {
   onClick?: () => void;
