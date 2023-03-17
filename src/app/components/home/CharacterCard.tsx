@@ -1,6 +1,7 @@
 import { ColorType, OpacityHex } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -18,7 +19,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
   index,
 }) => {
   return (
-    <CardContainer>
+    <CardContainer imageSrc={imageSrc}>
       <TextWrapper.IndexedText
         color={ColorType.NEUTRAL00}
         type={TextSizeType.KR_CAPTION_01}
@@ -45,20 +46,27 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
         세계관으로 이동 {`>`}
       </TextWrapper.RouteText>
       <Link href={"/home/1/edit"}>
-        <CardEditContainer></CardEditContainer>
+        <CardEditContainer>
+          <Image height={24} width={24} src={"/images/edit_icon.png"} alt="" />
+        </CardEditContainer>
       </Link>
     </CardContainer>
   );
 };
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ imageSrc: string }>`
   margin: auto;
   position: relative;
   width: 290px;
   height: 404px;
   border-radius: 16px;
   padding: 30px 28px;
-  background-color: #ffffff80;
+
+  background: ${({ imageSrc }) =>
+    `url(${imageSrc}), no-repeat linear-gradient(360deg, #6500c3 0%, rgba(255, 255, 255, 0) 100%)`};
+  background-size: cover;
+  background-color: #ffffff;
+  background-blend-mode: multiply;
   overflow: visible;
   display: flex;
   flex-direction: column;
@@ -90,6 +98,9 @@ const CardEditContainer = styled.div`
   height: 48px;
   border-radius: 100%;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   right: -12px;
   bottom: -12px;
 `;

@@ -37,7 +37,7 @@ export const mockupData = {
       {
         characterId: 3,
         characterName: "짱구",
-        characterImg: "/icons/짱구.svg",
+        characterImg: "/images/avatar_mock/face_avatar.png",
         characterMessage: "캐릭터 상태메세지",
       },
     ],
@@ -165,7 +165,7 @@ const mockCharacters = {
     {
       characterId: 2,
       characterName: "짱구",
-      characterImg: "/icons/짱구.svg",
+      characterImg: "/images/avatar_mock/blue_avatar.png",
       characterMessage: "캐릭터 상태메세지",
     },
   ],

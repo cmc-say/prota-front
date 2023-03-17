@@ -3,15 +3,21 @@
 import { ColorType } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/styled/button";
 import { WorldRectBox } from "@/app/components/world/WorldRectBox";
 import { Layout } from "@/styled/layout";
 import { Header } from "@/app/components/header/Header";
 import Link from "next/link";
+<<<<<<< Updated upstream
 import { Pagination } from "@/app/components/header/Pagination";
+=======
+import { worldMock } from "@/app/mocks/onBoardMocks";
+>>>>>>> Stashed changes
 
 export default function FirstOnBoard() {
+  const [selectedBox, selectBox] = useState<string>();
+
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
@@ -21,18 +27,16 @@ export default function FirstOnBoard() {
             세계관 추천 목록이에요.
           </Text>
           <Styled.GridContainer>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
+            {worldMock.map((world) => (
+              <WorldRectBox
+                onClick={() => {
+                  selectBox(world.title);
+                }}
+                isSelected={selectedBox === world.title}
+                title={world.title}
+                imageSrc={world.source}
+              ></WorldRectBox>
+            ))}
           </Styled.GridContainer>
           <Styled.BottomButtonContainer>
             <Styled.DIYBottomButton>
@@ -70,7 +74,7 @@ const BottomButton = styled(Button)`
 
 const MakeRecommendFirstStyled = {
   LWrapper: styled(Layout.Wrapper)`
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   `,
   Container: styled.div`
     padding: 24px;
@@ -84,6 +88,7 @@ const MakeRecommendFirstStyled = {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     flex: 1;
+    overflow: auto;
     padding-bottom: 120px;
   `,
   BottomButtonContainer: styled.div`

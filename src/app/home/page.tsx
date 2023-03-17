@@ -21,8 +21,55 @@ import { onBoardState } from "../onboard/store/onBoardStore";
 import { TopBar } from "../components/onboard/TopBar";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/header/Header";
+<<<<<<< Updated upstream
 import Link from "next/link";
 import { AlarmDot } from "../components/home/AlarmDot";
+=======
+import { AvatarMock } from "../mocks/homeMocks";
+
+export const EmptyCharacterCard = () => {
+  return (
+    <CardCard>
+      <FDiv>
+        <Text color={ColorType.NEUTRAL100} type={TextSizeType.KR_CAPTION_01}>
+          캐릭터를 직접 만들어봐요!
+        </Text>
+        <Text color={ColorType.NEUTRAL200} type={TextSizeType.KR_SUB_HEAD_01}>
+          + 캐릭터를 추가할래요~!
+        </Text>
+      </FDiv>
+    </CardCard>
+  );
+};
+
+const CardCard = styled.div`
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+
+  width: 290px;
+  height: 404px;
+
+  border: 2px dashed #6a7395;
+  border-radius: 16px;
+
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+`;
+
+const FDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+>>>>>>> Stashed changes
 
 export default function HomePage() {
   const [percent, setPercent] = useState<number>(20);
@@ -36,8 +83,12 @@ export default function HomePage() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
+<<<<<<< Updated upstream
           {/* <Theme.Light></Theme.Light> */}
           <Header action={<AlarmDot href="/home/alarm" />} />
+=======
+          <Header />
+>>>>>>> Stashed changes
           <div onClick={handleToggleContainerClick}>
             <Toggle initialOnOff={isToggleOn}></Toggle>
           </div>
@@ -53,29 +104,18 @@ export default function HomePage() {
                 spaceBetween={0}
                 slidesPerView={1.02}
               >
+                {AvatarMock.map((avater, index) => (
+                  <SwiperSlide key={avater.avatarName}>
+                    <CharacterCard
+                      index={index + 1}
+                      imageSrc={avater.source}
+                      characterName={avater.avatarName}
+                      characterDescription={avater.avatarDescription}
+                    ></CharacterCard>
+                  </SwiperSlide>
+                ))}
                 <SwiperSlide>
-                  <CharacterCard
-                    index={1}
-                    imageSrc="./"
-                    characterName="사과 농사꾼"
-                    characterDescription="흠 이정도면 잘익었군..."
-                  ></CharacterCard>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <CharacterCard
-                    index={2}
-                    imageSrc="./"
-                    characterName="사과 농사꾼 "
-                    characterDescription="흠 이정도면 잘익었군..."
-                  ></CharacterCard>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <CharacterCard
-                    index={3}
-                    imageSrc="./"
-                    characterName="사과 농사꾼"
-                    characterDescription="흠 이정도면 잘익었군..."
-                  ></CharacterCard>
+                  <EmptyCharacterCard></EmptyCharacterCard>
                 </SwiperSlide>
               </Swiper>
               <Styled.ProgressForm>
@@ -85,15 +125,15 @@ export default function HomePage() {
                 >
                   캐릭터 과몰입 그래프
                 </GraphText>
-                <ProgressBar percent={percent} />
+                <ProgressBar percent={0} />
               </Styled.ProgressForm>
             </>
           ) : (
             <CheckListCard
               index={1}
-              imageSrc="./"
-              characterName="사과 농사꾼"
-              characterDescription="흠 이정도면 잘익었군..."
+              imageSrc="/images/meta_mock.png"
+              characterName="메타몽"
+              characterDescription="다음 생엔 돌로 태어나야지"
             ></CheckListCard>
           )}
         </Styled.Container>

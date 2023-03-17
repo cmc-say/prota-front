@@ -15,6 +15,8 @@ import { CharacterCard } from "@/app/components/home/CharacterCard";
 import { Header } from "@/app/components/header/Header";
 import { SubFooter } from "@/app/components/world/SubFooter";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
+import { AvatarMock } from "@/app/mocks/homeMocks";
+import { EmptyCharacterCard } from "@/app/home/page";
 
 export default function CreateWorldFour() {
   return (
@@ -33,35 +35,24 @@ export default function CreateWorldFour() {
             spaceBetween={0}
             slidesPerView={1}
           >
+            {AvatarMock.map((avater, index) => (
+              <SwiperSlide key={avater.avatarName}>
+                <CharacterCard
+                  index={index + 1}
+                  imageSrc={avater.source}
+                  characterName={avater.avatarName}
+                  characterDescription={avater.avatarDescription}
+                ></CharacterCard>
+              </SwiperSlide>
+            ))}
             <SwiperSlide>
-              <CharacterCard
-                index={1}
-                imageSrc="./"
-                characterName="사과 농사꾼"
-                characterDescription="흠 이정도면 잘익었군..."
-              ></CharacterCard>
-            </SwiperSlide>
-            <SwiperSlide>
-              <CharacterCard
-                index={2}
-                imageSrc="./"
-                characterName="사과 농사꾼 "
-                characterDescription="흠 이정도면 잘익었군..."
-              ></CharacterCard>
-            </SwiperSlide>
-            <SwiperSlide>
-              <CharacterCard
-                index={3}
-                imageSrc="./"
-                characterName="사과 농사꾼"
-                characterDescription="흠 이정도면 잘익었군..."
-              ></CharacterCard>
+              <EmptyCharacterCard></EmptyCharacterCard>
             </SwiperSlide>
           </Swiper>
           <SubFooter question="세계관의 캐릭터를 새로 만들래요">
             캐릭터 만들러가기 &gt;
           </SubFooter>
-          <FooterBtn href="/world/1">세계관 시작하기!</FooterBtn>
+          <FooterBtn href="/world/my-world">세계관 시작하기!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

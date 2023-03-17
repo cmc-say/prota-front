@@ -9,9 +9,12 @@ import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
 
 export default function ThirdOnBoard() {
+  const [firstValue, setFirstValue] = useState("");
+  const [secondValue, setSecondValue] = useState("");
+
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
@@ -33,7 +36,8 @@ export default function ThirdOnBoard() {
             </Text>
             <TextArea
               placeholder="세계관 멤버들은 내 세계관의 법을 따라야해요. 공지사항 및 세계관 설명을 적어주세요~!"
-              value=""
+              value={firstValue}
+              onChange={(event) => setFirstValue(event.target.value)}
               maxLength={50}
             />
           </Styled.Form>
@@ -46,7 +50,8 @@ export default function ThirdOnBoard() {
             </Text>
             <TextArea
               placeholder="#미라클모닝 #명화 #빡세게"
-              value=""
+              value={secondValue}
+              onChange={(event) => setSecondValue(event.target.value)}
               maxLength={30}
             />
           </Styled.Form>

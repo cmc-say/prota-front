@@ -7,18 +7,31 @@ import Image from "next/image";
 interface WorldBoxProps {
   imageSrc: string;
   title: string;
+  isSelected: boolean;
+  onClick: () => void;
 }
 
-export const WorldRectBox: React.FC<WorldBoxProps> = ({ imageSrc, title }) => {
+export const WorldRectBox: React.FC<WorldBoxProps> = ({
+  imageSrc,
+  title,
+  onClick,
+  isSelected,
+}) => {
   return (
-    <Styled.Container>
+    <Styled.Container onClick={onClick}>
       {imageSrc ? (
-        <Styled.WorldBox src={imageSrc} alt="box" width={160} height={160} />
+        <Styled.WorldBox
+          isSelected={isSelected}
+          src={imageSrc}
+          alt="box"
+          width={160}
+          height={160}
+        />
       ) : (
         <Styled.NoneBox />
       )}
       <Styled.WorldText
-        color={ColorType.NEUTRAL00}
+        color={isSelected ? ColorType.SECONDARY1 : ColorType.NEUTRAL00}
         type={TextSizeType.KR_HEAD_03}
       >
         {title}
@@ -30,9 +43,19 @@ export const WorldRectBox: React.FC<WorldBoxProps> = ({ imageSrc, title }) => {
 const WorldRectBoxStyled = {
   Container: styled.div`
     position: relative;
+    user-select: none;
   `,
-  WorldBox: styled(Image)`
+  WorldBox: styled(Image)<{ isSelected: boolean }>`
     border-radius: 16px;
+    box-sizing: border-box;
+    ${({ isSelected }) => {
+      return (
+        isSelected &&
+        `
+        border : 1px solid ${ColorType.SECONDARY1} !important;
+      `
+      );
+    }}
   `,
   NoneBox: styled.div`
     background-color: ${ColorType.NEUTRAL500};

@@ -53,7 +53,7 @@ export default function CreateWorld() {
               안전한 세계관을 만들어 가요 😉
             </Styled.SubTitle>
           </Styled.SubTitleContainer>
-          <FooterBtn href="/world/create-world">세계관 만들기 시작!</FooterBtn>
+          <FooterBtn href="/world/create-world-first">세계관 만들기 시작!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>

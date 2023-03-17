@@ -3,6 +3,8 @@
 import { Header } from "@/app/components/header/Header";
 import { FooterBtn } from "@/app/components/world/FooterBtn";
 import { WorldCharacter } from "@/app/components/world/WorldCharacter";
+import { avatarMocks } from "@/app/mocks/avatar_mock";
+import { AvatarMock } from "@/app/mocks/homeMocks";
 import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
@@ -22,50 +24,17 @@ export default function WorldDetail() {
             </Text>
           </SubHeader>
           <Date color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
-            23.01.21
+            23.03.19
           </Date>
           <div></div>
           <CheckListCharacter>
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
-            <WorldCharacter
-              size={66}
-              src={"/icons/steve_jobs.svg"}
-              value="이미지"
-            />
+            {avatarMocks.map((avatar) => (
+              <WorldCharacter
+                size={66}
+                src={avatar.source}
+                value={avatar.name}
+              />
+            ))}
           </CheckListCharacter>
         </Container>
         <FooterBtn

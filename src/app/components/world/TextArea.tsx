@@ -20,6 +20,7 @@ export const TextArea: React.FC<Props> = ({
       <Styled.TextBox
         onChange={onChange}
         value={value}
+        maxLength={maxLength}
         placeholder={placeholder}
       ></Styled.TextBox>
       {maxLength && (

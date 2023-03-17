@@ -6,14 +6,11 @@ import { Header } from "../components/header/Header";
 import { Text, TextSizeType } from "@/styled/typography";
 import { WorldRectBox } from "../components/world/WorldRectBox";
 import { ColorType } from "@/styled/color.type";
-import { FooterBtn } from "../components/world/FooterBtn";
-import Link from "next/link";
-import { useRecoilState } from "recoil";
-import { OnBoardStatus, onBoardState } from "../onboard/store/onBoardStore";
+
 import { Attainment } from "../components/mypage/Attainment";
 
 export default function MyPage() {
-  const [a, state] = useRecoilState(onBoardState);
+
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
