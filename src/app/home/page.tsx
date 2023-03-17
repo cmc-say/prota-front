@@ -21,11 +21,8 @@ import { onBoardState } from "../onboard/store/onBoardStore";
 import { TopBar } from "../components/onboard/TopBar";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/header/Header";
-<<<<<<< Updated upstream
 import Link from "next/link";
 import { AlarmDot } from "../components/home/AlarmDot";
-=======
->>>>>>> Stashed changes
 import { AvatarMock } from "../mocks/homeMocks";
 
 export const EmptyCharacterCard = () => {
@@ -83,12 +80,8 @@ export default function HomePage() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-<<<<<<< Updated upstream
           {/* <Theme.Light></Theme.Light> */}
           <Header action={<AlarmDot href="/home/alarm" />} />
-=======
-          <Header />
->>>>>>> Stashed changes
           <div onClick={handleToggleContainerClick}>
             <Toggle initialOnOff={isToggleOn}></Toggle>
           </div>
