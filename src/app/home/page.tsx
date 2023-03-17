@@ -80,12 +80,8 @@ export default function HomePage() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-<<<<<<< Updated upstream
           {/* <Theme.Light></Theme.Light> */}
           <Header action={<AlarmDot href="/home/alarm" />} />
-=======
-          <Header />
->>>>>>> Stashed changes
           <div onClick={handleToggleContainerClick}>
             <Toggle initialOnOff={isToggleOn}></Toggle>
           </div>
