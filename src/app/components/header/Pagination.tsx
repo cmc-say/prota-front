@@ -34,6 +34,7 @@ const PaginationStyled = {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${ColorType.NEUTRAL00};
     background: ${(props) => (props.select ? ColorType.PRIMARY1 : "none")};
   `,
 };

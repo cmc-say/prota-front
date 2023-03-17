@@ -19,7 +19,7 @@ export default function HomeCharacterEdit() {
           <Header back action={<img src="/icons/delete_btn.svg" />}>
             캐릭터 수정
           </Header>
-          {/* <FileUpload /> */}
+          <FileUpload setValue={() => {}} />
           <Styled.Description>
             <InputBox placeholder="캐릭터 이름" value={""} maxLength={6} />
             <TextArea
