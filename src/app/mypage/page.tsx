@@ -8,9 +8,9 @@ import { WorldRectBox } from "../components/world/WorldRectBox";
 import { ColorType } from "@/styled/color.type";
 
 import { Attainment } from "../components/mypage/Attainment";
+import Link from "next/link";
 
 export default function MyPage() {
-
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
