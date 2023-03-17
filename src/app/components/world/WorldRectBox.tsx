@@ -7,8 +7,8 @@ import Image from "next/image";
 interface WorldBoxProps {
   imageSrc: string;
   title: string;
-  isSelected: boolean;
-  onClick: () => void;
+  isSelected?: boolean;
+  onClick?: () => void;
 }
 
 export const WorldRectBox: React.FC<WorldBoxProps> = ({
@@ -21,7 +21,7 @@ export const WorldRectBox: React.FC<WorldBoxProps> = ({
     <Styled.Container onClick={onClick}>
       {imageSrc ? (
         <Styled.WorldBox
-          isSelected={isSelected}
+          isSelected={isSelected ? true : false}
           src={imageSrc}
           alt="box"
           width={160}
@@ -47,7 +47,6 @@ const WorldRectBoxStyled = {
   `,
   WorldBox: styled(Image)<{ isSelected: boolean }>`
     border-radius: 16px;
-    box-sizing: border-box;
     ${({ isSelected }) => {
       return (
         isSelected &&
