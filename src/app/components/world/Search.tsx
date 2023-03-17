@@ -47,6 +47,8 @@ const SearchStyled = {
     flex: 1 1 auto;
     background: none;
     border: none;
+    color: ${ColorType.NEUTRAL00};
+    outline: none;
   `,
 };
 
