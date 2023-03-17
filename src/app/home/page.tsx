@@ -21,10 +21,8 @@ import { onBoardState } from "../onboard/store/onBoardStore";
 import { TopBar } from "../components/onboard/TopBar";
 import { ProgressBar } from "../components/ProgressBar";
 import { Header } from "../components/header/Header";
-<<<<<<< Updated upstream
 import Link from "next/link";
 import { AlarmDot } from "../components/home/AlarmDot";
-=======
 import { AvatarMock } from "../mocks/homeMocks";
 
 export const EmptyCharacterCard = () => {
@@ -69,7 +67,6 @@ const FDiv = styled.div`
   justify-content: center;
   align-items: center;
 `;
->>>>>>> Stashed changes
 
 export default function HomePage() {
   const [percent, setPercent] = useState<number>(20);

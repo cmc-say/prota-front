@@ -9,11 +9,8 @@ import { WorldRectBox } from "@/app/components/world/WorldRectBox";
 import { Layout } from "@/styled/layout";
 import { Header } from "@/app/components/header/Header";
 import Link from "next/link";
-<<<<<<< Updated upstream
 import { Pagination } from "@/app/components/header/Pagination";
-=======
 import { worldMock } from "@/app/mocks/onBoardMocks";
->>>>>>> Stashed changes
 
 export default function FirstOnBoard() {
   const [selectedBox, selectBox] = useState<string>();
