@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import "./globals.css";
 import { RecoilRoot } from "recoil";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,7 @@ export default function RootLayout({
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const pathHandler = (e: any) => {
       routerMapper(JSON.parse(e.data)["path"]);
     };
