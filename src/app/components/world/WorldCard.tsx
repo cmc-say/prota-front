@@ -57,7 +57,7 @@ export const WorldCard: React.FC<MCard> = ({ data }) => {
         ))}
       </HashTagList>
       <CardBottomImage
-        src={"/icons/word_card_image.svg"}
+        src={data.worldImg}
         width={211}
         height={160}
         alt="word_card_image"

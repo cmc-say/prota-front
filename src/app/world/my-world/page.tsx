@@ -1,11 +1,18 @@
 "use client";
 
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { WorldCard } from "../../components/world/WorldCard";
 import { Layout } from "@/styled/layout";
 import { WorldCharacter } from "../../components/world/WorldCharacter";
 import { CreateWorld } from "../../components/world/CreateWorld";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  AtomAddCharacterWorld,
+  AtomCharacterWorldsSelector,
+  AtomCharacters,
+  AtomSelectedCharacterIdState,
+} from "@/app/atoms/atom";
 
 export const mockupData = {
   characters: {
@@ -15,14 +22,20 @@ export const mockupData = {
     data: [
       {
         characterId: 1,
-        characterName: "steve_jobs",
-        characterImg: "/icons/steve_jobs.svg",
+        characterName: "메타몽",
+        characterImg: "/icons/메타몽.svg",
         characterMessage: "캐릭터 상태메세지",
       },
       {
         characterId: 2,
-        characterName: "masterpiece",
-        characterImg: "/icons/masterpiece.svg",
+        characterName: "대머리",
+        characterImg: "/icons/대머리.svg",
+        characterMessage: "캐릭터 상태메세지",
+      },
+      {
+        characterId: 3,
+        characterName: "짱구",
+        characterImg: "/icons/짱구.svg",
         characterMessage: "캐릭터 상태메세지",
       },
     ],
@@ -33,26 +46,31 @@ export const mockupData = {
     data: [
       {
         worldId: 1,
-        worldName: "세계관 하나",
+        worldName: "명화가 살아있다.",
         worldUserLimit: 10,
-        worldImg: "url",
+        worldImg: "/icons/명화1.svg",
         worldStartDate: "2023-02-21T00:00:00",
         worldEndDate: "2023-03-21T00:00:00",
         hashtags: [
           {
             worldHashtagId: 1,
             hashtagId: 1,
-            hashtagName: "해시태그1",
+            hashtagName: "명화모임",
           },
           {
             worldHashtagId: 2,
             hashtagId: 2,
-            hashtagName: "해시태그2",
+            hashtagName: "자기관리",
           },
           {
             worldHashtagId: 3,
             hashtagId: 3,
-            hashtagName: "해시태그3",
+            hashtagName: "공부",
+          },
+          {
+            worldHashtagId: 4,
+            hashtagId: 4,
+            hashtagName: "외국어",
           },
         ],
         worldHostUserId: 1,
@@ -275,8 +293,47 @@ export const mockupData = {
   },
 };
 
+const mockCharacters = {
+  status: 200,
+  success: true,
+  message: "정보 조회 성공",
+  data: [
+    {
+      characterId: 0,
+      characterName: "메타몽",
+      characterImg: "/icons/메타몽.svg",
+      characterMessage: "캐릭터 상태메세지",
+    },
+    {
+      characterId: 1,
+      characterName: "대머리",
+      characterImg: "/icons/대머리.svg",
+      characterMessage: "캐릭터 상태메세지",
+    },
+    {
+      characterId: 2,
+      characterName: "짱구",
+      characterImg: "/icons/짱구.svg",
+      characterMessage: "캐릭터 상태메세지",
+    },
+  ],
+};
+
 export default function World() {
-  const [select, setSelect] = useState(0);
+  const [select, setSelect] = useRecoilState(AtomSelectedCharacterIdState);
+  const [characters, setCharacters] = useRecoilState(AtomCharacters);
+  const worlds = useRecoilValue(AtomCharacterWorldsSelector);
+  const setCharacterWorlds = useSetRecoilState(AtomAddCharacterWorld);
+
+  useEffect(() => {
+    if (mockCharacters.status) {
+      setCharacters(mockCharacters.data);
+    }
+  }, []);
+
+  useEffect(() => {
+    setCharacterWorlds(select);
+  }, [select, characters]);
 
   return (
     <Styled.LWrapper>
@@ -284,8 +341,10 @@ export default function World() {
         <Layout.FlexColumn>
           <Styled.Container>
             <Styled.CharacterList>
-              {mockupData.characters.data.map((item) => (
+              {mockupData.characters.data.map((item, index) => (
                 <WorldCharacter
+                  onClick={() => setSelect(index)}
+                  isSelected={select === index}
                   key={item.characterId}
                   src={item.characterImg}
                   value={item.characterName}
@@ -294,7 +353,7 @@ export default function World() {
               <WorldCharacter src={"/icons/character_add.svg"} value={"추가"} />
             </Styled.CharacterList>
             <Styled.WorldGapList>
-              {mockupData.worlds.data.map((item) => (
+              {worlds?.map((item: any) => (
                 <WorldCard key={item.worldId} data={item} />
               ))}
               <CreateWorld />

@@ -31,7 +31,12 @@ export default function MakeCharacterOnBoard() {
 
   const addAvatar = async () => {
     const character = new CharacterAPIService();
-    await character.addCharacter({ file, avatarName, avatarMessage });
+    const res = await character.addCharacter({
+      file,
+      avatarName,
+      avatarMessage,
+    });
+    console.log(res);
   };
 
   return (

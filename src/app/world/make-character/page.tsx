@@ -15,7 +15,7 @@ export default function MakeCharacter() {
       <Layout.Mobile>
         <Styled.Container>
           <Header />
-          <FileUpload />
+          {/* <FileUpload /> */}
           <Styled.Description>
             <InputBox placeholder="캐릭터 이름" value={""} maxLength={6} />
             <TextArea
