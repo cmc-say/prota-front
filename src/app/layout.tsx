@@ -4,6 +4,16 @@ import { useEffect } from "react";
 import "./globals.css";
 import { RecoilRoot } from "recoil";
 import { useRouter } from "next/navigation";
+
+// react native app 환경인지 판단
+const isApp = () => {
+  let isApp = false;
+  // @ts-ignore: Unreachable code error
+  if (typeof window !== "undefined" && window.ReactNativeWebView) {
+    isApp = true;
+  }
+  return isApp;
+};
 export default function RootLayout({
   children,
 }: {
@@ -30,10 +40,14 @@ export default function RootLayout({
     }
   };
 
+  const pathHandler = (e: any) => {
+    routerMapper(JSON.parse(e.data)["path"]);
+  };
+
   useEffect(() => {
-    const pathHandler = (e: any) => {
-      routerMapper(JSON.parse(e.data)["path"]);
-    };
+    if (!isApp()) {
+      return;
+    }
 
     window.addEventListener("message", pathHandler);
     document.addEventListener("message", pathHandler);

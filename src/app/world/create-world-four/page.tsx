@@ -2,7 +2,7 @@
 
 import styled from "@emotion/styled";
 import { Layout } from "@/styled/layout";
-import { Text, TextSizeType } from "@/styled/typography";
+import { Text } from "@/styled/typography";
 import { css } from "@emotion/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";

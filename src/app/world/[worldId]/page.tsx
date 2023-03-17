@@ -38,7 +38,7 @@ export default function WorldDetail() {
           </CheckListCharacter>
         </Container>
         <FooterBtn
-          href="/world/1/wordToday"
+          href="/world/1/word-today"
           subTitle="체크리스트를 완료하고, 오늘의 한 마디를 작성하세요!"
         >
           오늘의 한 마디 작성할래요!
@@ -79,6 +79,6 @@ const CheckListCharacter = styled.div`
   display: flex;
   column-gap: 26px;
   row-gap: 13px;
-  justify-contents: space-between;
+
   flex-wrap: wrap;
 `;
