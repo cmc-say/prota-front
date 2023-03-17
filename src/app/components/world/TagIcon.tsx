@@ -2,11 +2,19 @@ import { ColorType } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 
-export const TagIcon = () => {
+type Props = {
+  item: {
+    name: string;
+    color: string;
+    background: string;
+  };
+};
+
+export const TagIcon: React.FC<Props> = ({ item }) => {
   return (
-    <TagIconStyled.Container color="#5960FF">
-      <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_BODY_01}>
-        #해리포터
+    <TagIconStyled.Container color={item.background}>
+      <Text color={item.color} type={TextSizeType.KR_BODY_01}>
+        {item.name}
       </Text>
     </TagIconStyled.Container>
   );
@@ -15,7 +23,8 @@ export const TagIcon = () => {
 const TagIconStyled = {
   Container: styled.div`
     padding: 8px 16px;
-    background: ${(props) => props.color};
+    width: fit-content;
+    background-color: ${(props) => props.color};
     border-radius: 40px;
   `,
 };

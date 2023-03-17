@@ -3,11 +3,30 @@
 import { ColorType } from "@/styled/color.type";
 import styled from "@emotion/styled";
 
-export const Search = () => {
+type Props = {
+  onChange: (value: string) => void;
+  value: string;
+  submit: () => void;
+};
+
+export const Search: React.FC<Props> = ({ onChange, value, submit }) => {
+  const handleOnKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      submit();
+    }
+  };
+
   return (
     <Styled.Container>
       <Styled.BlackIcon src="/icons/black_search_btn.svg" alt="black_search" />
-      <Styled.SearchInput placeholder="검색어를 입력해 보세요~!" />
+      <Styled.SearchInput
+        type="search"
+        value={value}
+        onKeyDown={handleOnKeyPress}
+        onSubmit={() => console.log("?")}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="검색어를 입력해 보세요~!"
+      />
     </Styled.Container>
   );
 };
