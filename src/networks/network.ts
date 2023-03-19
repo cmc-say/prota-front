@@ -57,6 +57,11 @@ export type WordToday = {
   avatarId: number;
 };
 
+export type GetRecommendedAlarmRes = {
+  recommendedAlarmId: number;
+  recommendedAlarmContent: string;
+};
+
 export type LoginReq = {
   deviceToken: string;
   socialId: string;
