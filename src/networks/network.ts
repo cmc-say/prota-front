@@ -61,6 +61,11 @@ export type GetRecommendedAlarmRes = {
   recommendedAlarmId: number;
   recommendedAlarmContent: string;
 };
+export type SendMessageReq = {
+  senderAvatarId: number;
+  receiverAvatarId: number;
+  alarmMessage: string;
+};
 
 export type LoginReq = {
   deviceToken: string;
