@@ -95,7 +95,7 @@ const MakeRecommendFirstStyled = {
     bottom: 50px;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index: 9;
+    z-index: 999;
   `,
   DIYBottomButton: styled(BottomButton)`
     margin-right: 16px;
