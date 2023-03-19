@@ -19,6 +19,8 @@ type Hashtag = {
   hashtagName: string;
 };
 
+export type GetHashtagListRes = Hashtag[];
+
 type WorldAvatar = {
   worldAvatarId: number;
   worldId: number;
@@ -49,7 +51,7 @@ type Avatar = {
   userId: number;
 };
 
-type WordToday = {
+export type WordToday = {
   wordtodayId: number;
   wordtodayContent: string;
   avatarId: number;
@@ -87,13 +89,17 @@ export type BlockUserRes = {};
 export type CheckCharacterExistReq = {
   worldId: number;
 };
-export type CheckCharacterExistRes = {};
+export type CheckCharacterExistRes = {
+  isMember: boolean;
+};
 
 export type CheckTodoReq = {
   avatarId: number;
   worldId: number;
   todoId: number;
 };
+
+export type GetAvatarAllWorldTodos = Todo[];
 
 export type CreateWorldReq = {
   file: any;
@@ -159,7 +165,7 @@ export type AddCharacterReq = {
 export type AddCharacterRes = {};
 
 export type GetRecommendedWorldReq = {};
-export type GetRecommendedWorldRes = RecommendedWorld;
+export type GetRecommendedWorldRes = RecommendedWorld[];
 
 export type PostCharacterImgReq = {};
 export type PostCharacterImgRes = {};

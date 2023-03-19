@@ -1,20 +1,10 @@
 import {
-  AddCharacterReq,
-  AddCharacterRes,
   BlockUserReq,
   BlockUserRes,
   CheckCharacterExistReq,
   CheckCharacterExistRes,
-  CreateWordTodayReq,
-  CreateWordTodayRes,
-  DeleteCharacterReq,
-  DeleteCharacterRes,
   GetUserCharacterRes,
   GetUserCharactersReq,
-  PostCharacterImgReq,
-  PostCharacterImgRes,
-  PutCharacterInfoReq,
-  PutCharacterInfoRes,
   ReportUserReq,
   ReportUserRes,
 } from "./network";
@@ -39,13 +29,13 @@ export default class UserApiService extends APINetworkService {
 
   async getAllCharacterList({}: GetUserCharactersReq): Promise<GetUserCharacterRes> {
     const res = await axiosinstance.get(`/user/avatars`);
-    return res;
+    return res.data.data;
   }
 
   async isCheckCharacterExist(
     req: CheckCharacterExistReq
   ): Promise<CheckCharacterExistRes> {
     const res = await axiosinstance.get(`/user/world/${req.worldId}/is-member`);
-    return res;
+    return res.data.data;
   }
 }

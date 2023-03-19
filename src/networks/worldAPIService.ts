@@ -5,7 +5,12 @@ import {
   DeleteWorldReq,
   EditWorldInfoReq,
   GetAllWorldListReq,
+  GetAllWorldListRes,
+  GetHashtagListRes,
+  GetRecommendedWorldRes,
+  GetRecommendedWorldTodosRes,
   GetWorldInfoReq,
+  GetWorldListRes,
   SearchWorldReq,
   UpdateWorldImgReq,
 } from "./network";
@@ -41,10 +46,9 @@ export default class WorldAPIService extends APINetworkService {
     const res = await axiosinstance.put(`/world/${req.worldId}/info}`);
     return res.data;
   }
-
-  async getAllWorlds(req: GetAllWorldListReq) {
+  async getAllWorlds(req: GetAllWorldListReq): Promise<GetAllWorldListRes> {
     const res = await axiosinstance.get(`/world/?order=${req.type}`);
-    return res.data;
+    return res.data.data;
   }
   async deleteWorld(req: DeleteWorldReq) {
     const res = await axiosinstance.delete(`/world/${req.worldId}`);
@@ -52,19 +56,20 @@ export default class WorldAPIService extends APINetworkService {
   }
   async getWorldInfoById(req: GetWorldInfoReq) {
     const res = await axiosinstance.get(`/world/${req.worldId}`);
-    return res.data;
+    return res.data.data;
   }
   async getTodoCheckCount(req: GetWorldInfoReq) {
     const res = await axiosinstance.get(`/world/${req.worldId}/todo/today`);
-    return res.data;
+    return res.data.data;
   }
   async getWorldCharacters(req: GetWorldInfoReq) {
     const res = await axiosinstance.get(`/world/${req.worldId}/avatars`);
-    return res.data;
+    return res.data.data;
   }
-  async searchWorld(req: SearchWorldReq) {
+  
+  async searchWorld(req: SearchWorldReq): Promise<GetWorldListRes> {
     const res = await axiosinstance.get(`/world/search?keyword=${req.keyword}`);
-    return res.data;
+    return res.data.data;
   }
 
   async addMultipleHashtags(req: AddMultipleHashtagsReq) {
@@ -80,22 +85,22 @@ export default class WorldAPIService extends APINetworkService {
     // });
     // return res.data;
   }
-  async getRecommendedWorld() {
+  async getRecommendedWorld(): Promise<GetRecommendedWorldRes> {
     const res = await axiosinstance.post("/world/recommended");
-    return res.data;
+    return res.data.data;
   }
-  async getRecommendedWorldTodo(req: GetWorldInfoReq) {
+
+  async getRecommendedWorldTodo(
+    req: GetWorldInfoReq
+  ): Promise<GetRecommendedWorldTodosRes> {
     const res = await axiosinstance.post(
       `/world/${req.worldId}/todo/recommended`
     );
     return res.data;
   }
-  async getRealTimeWorld() {
-    const res = await axiosinstance.get("/world?order=recent");
-    return res.data.data;
-  }
-  async getPopularHashtag() {
+
+  async getPopularHashtag(): Promise<GetHashtagListRes> {
     const res = await axiosinstance.get("/world/hashtags?order=popular");
-    return res.data;
+    return res.data.data;
   }
 }

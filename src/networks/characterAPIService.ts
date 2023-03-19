@@ -1,16 +1,20 @@
+import { World } from "@/application/domain/world";
 import {
   AddCharacterReq,
   AddCharacterRes,
   CheckTodoReq,
   CreateWordTodayReq,
   DeleteCharacterReq,
-  UpdateWorldImgReq,
   GetCharacterInfoReq,
   ParticipateWorldReq,
   UpdateCharacterImgReq,
   EditCharacterInfoReq,
   GetTodayWordReq,
+  GetCharacterInfoRes,
+  GetTodayWordRes,
+  GetAvatarAllWorldTodos,
 } from "./network";
+
 import {
   APINetworkService,
   axiosMediaInstance,
@@ -18,13 +22,15 @@ import {
 } from "./networkCore";
 
 export default class CharacterAPIService extends APINetworkService {
-  async getCharacterInfo(req: GetCharacterInfoReq) {
+  async getCharacterInfo(
+    req: GetCharacterInfoReq
+  ): Promise<GetCharacterInfoRes> {
     const res = await axiosinstance.get(`/avatar/${req.avatarId}`);
-    return res.data;
+    return res.data.data;
   }
-  async getAllCharacterWorlds(req: GetCharacterInfoReq) {
+  async getAllCharacterWorlds(req: GetCharacterInfoReq): Promise<World[]> {
     const res = await axiosinstance.get(`/avatar/${req.avatarId}/worlds`);
-    return res.data;
+    return res.data.data;
   }
   async addCharacter(req: AddCharacterReq): Promise<AddCharacterRes> {
     const data = new FormData();
@@ -91,7 +97,7 @@ export default class CharacterAPIService extends APINetworkService {
     const res = await axiosinstance.get(
       `/avatar/${req.avatarId}/world/${req.worldId}/todos`
     );
-    return res.data;
+    return res.data.data;
   }
 
   async createWorldToday(req: CreateWordTodayReq) {
@@ -104,15 +110,17 @@ export default class CharacterAPIService extends APINetworkService {
     return res.data;
   }
 
-  async getWordToday(req: GetTodayWordReq) {
+  async getWordToday(req: GetTodayWordReq): Promise<GetTodayWordRes> {
     const res = await axiosinstance.get(
       `/avatar/${req.avatarId}/world/${req.worldId}/wordtoday/${req.wordTodayId}`
     );
-    return res.data;
+    return res.data.data;
   }
 
-  async getAllWorldTodos(req: GetCharacterInfoReq) {
+  async getAllWorldTodos(
+    req: GetCharacterInfoReq
+  ): Promise<GetAvatarAllWorldTodos> {
     const res = await axiosinstance.get(`/avatar/${req.avatarId}/todo/month`);
-    return res.data;
+    return res.data.data;
   }
 }

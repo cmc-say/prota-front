@@ -41,7 +41,9 @@ export default function RootLayout({
   };
 
   const pathHandler = (e: any) => {
-    routerMapper(JSON.parse(e.data)["path"]);
+    if (e.data !== "") {
+      routerMapper(JSON.parse(e.data)["path"]);
+    }
   };
 
   useEffect(() => {
