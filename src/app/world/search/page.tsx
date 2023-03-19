@@ -1,5 +1,6 @@
 "use client";
 
+import { AtomRealTimeWorld, Worlds } from "@/app/atoms/atom";
 import { Header } from "@/app/components/header/Header";
 import { WorldCard } from "@/app/components/world/WorldCard";
 import { ColorType } from "@/styled/color.type";
@@ -7,6 +8,8 @@ import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 const mockupData = {
   characters: {
@@ -188,6 +191,8 @@ const mockupData = {
 };
 
 export default function PopularWorld() {
+  const worlds = useRecoilValue(AtomRealTimeWorld);
+
   return (
     <Styled.LWrapper>
       <Layout.Mobile>
@@ -208,7 +213,7 @@ export default function PopularWorld() {
             실시간 세계관 확인
           </Text>
           <Styled.WorldGapList>
-            {mockupData.worlds.data.map((item, index) => (
+            {worlds.map((item, index) => (
               <WorldCard key={item.worldId} data={item} />
             ))}
           </Styled.WorldGapList>

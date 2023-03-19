@@ -59,6 +59,7 @@ export default function MakeCharacterOnBoard() {
               maxLength={30}
             />
           </Styled.Description>
+          <button onClick={addAvatar}>추가</button>
           <FooterBtn popStack={4} href="/home">
             캐릭터 생성 완료!
           </FooterBtn>
