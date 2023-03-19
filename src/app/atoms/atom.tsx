@@ -37,6 +37,12 @@ type CharacterIdWorlds = {
   worlds: Worlds;
 }[];
 
+export type LoginRequired = {
+  deviceToken: string;
+  socialId: string;
+  socialType: "kakao" | "apple";
+};
+
 export const AtomSelectedCharacterIdState = atom<number>({
   key: "selectedCharacterId",
   default: 0,
