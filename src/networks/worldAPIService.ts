@@ -90,6 +90,10 @@ export default class WorldAPIService extends APINetworkService {
     );
     return res.data;
   }
+  async getRealTimeWorld() {
+    const res = await axiosinstance.get("/world?order=recent");
+    return res.data.data;
+  }
   async getPopularHashtag() {
     const res = await axiosinstance.get("/world/hashtags?order=popular");
     return res.data;
