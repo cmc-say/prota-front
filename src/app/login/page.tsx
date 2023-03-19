@@ -1,7 +1,7 @@
 "use client";
 
 import AuthApiService from "@/networks/authAPIService";
-import { axiosinstance } from "@/networks/networkCore";
+import { axiosMediaInstance, axiosinstance } from "@/networks/networkCore";
 import { useEffect } from "react";
 import { LoginRequired } from "../atoms/atom";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,11 @@ export default function LoginPage() {
           axiosinstance.defaults.headers.common[
             "Authorization"
           ] = `bearer ${res.accessToken}`;
+
+          axiosMediaInstance.defaults.headers.common[
+            "Authorization"
+          ] = `bearer ${res.accessToken}`;
+
           const data = JSON.stringify({
             type: MessageType.LOG_IN,
             message: res.accessToken,
@@ -36,6 +41,7 @@ export default function LoginPage() {
         });
     }
   };
+  
   useEffect(() => {
     const loginRequired =
       (window as any).loginRequired || (document as any).loginRequired;
