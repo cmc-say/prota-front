@@ -57,11 +57,13 @@ type WordToday = {
 
 export type LoginReq = {
   deviceToken: string;
-  authorizationCode: string;
+  socialId: string;
   socialType: string;
 };
 export type LoginRes = {
-  accessToken: string;
+  data: {
+    accessToken: string;
+  };
 };
 
 export type LogoutReq = {};
