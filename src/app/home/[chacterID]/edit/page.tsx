@@ -28,7 +28,7 @@ export default function HomeCharacterEdit() {
               maxLength={30}
             />
           </Styled.Description>
-          <FooterBtn isBack={true}>캐릭터 수정 완료!</FooterBtn>
+          <FooterBtn isBack={true}>캐릭터 수정하기!</FooterBtn>
         </Styled.Container>
       </Layout.Mobile>
     </Styled.LWrapper>
