@@ -61,9 +61,7 @@ export type LoginReq = {
   socialType: string;
 };
 export type LoginRes = {
-  data: {
-    accessToken: string;
-  };
+  accessToken: string;
 };
 
 export type LogoutReq = {};
