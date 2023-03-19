@@ -1,3 +1,60 @@
+type World = {
+  worldId: number;
+  worldName: string;
+  worldUserLimit: number;
+  worldImg: string;
+  worldStartDate: string;
+  worldEndDate: string;
+  hashtags: Hashtag[];
+  worldHostUserId: number;
+  worldNotice: string;
+  worldPassword: string;
+  worldAvatars: WorldAvatar[];
+  todos: Todo[];
+};
+
+type Hashtag = {
+  worldHashtagId: number;
+  hashtagId: number;
+  hashtagName: string;
+};
+
+type WorldAvatar = {
+  worldAvatarId: number;
+  worldId: number;
+  avatarId: number;
+};
+
+type Todo = {
+  todoId: number;
+  todoContent: string;
+};
+
+type RecommendedWorld = {
+  recommendedWorldId: number;
+  recommendedWorldName: string;
+  recommendedWorldImg: string;
+};
+
+type RecommendedAlarm = {
+  recommendedAlarmId: number;
+  recommendedAlarmContent: string;
+};
+
+type Avatar = {
+  avatarId: number;
+  avatarName: string;
+  avatarImg: string;
+  avatarMessage: string;
+  userId: number;
+};
+
+type WordToday = {
+  wordtodayId: number;
+  wordtodayContent: string;
+  avatarId: number;
+};
+
 export type LoginReq = {
   deviceToken: string;
   authorizationCode: string;
@@ -50,12 +107,17 @@ export type CreateWorldReq = {
 export type CreateWorldRes = {};
 
 export type GetWorldListReq = {};
-export type GetWorldListRes = {};
+export type GetWorldListRes = World[];
+
+export type getWorldCharacterListReq = {};
+export type getWorldCharacterListRes = (Avatar & {
+  wordtodayId: number | null;
+})[];
 
 export type GetAllWorldListReq = {
   type: string;
 };
-export type GetAllWorldListRes = {};
+export type GetAllWorldListRes = World[];
 
 export type DeleteWorldReq = {
   worldId: number;
@@ -71,21 +133,23 @@ export type PostWorldImgRes = {};
 export type GetWorldInfoReq = {
   worldId: number;
 };
-export type GetWorldInfoRes = {};
+export type GetWorldInfoRes = World;
 
 export type SearchWorldReq = {
   keyword: string;
 };
-export type SearchWorldRes = {};
+export type SearchWorldRes = World[];
 
 export type GetUserCharactersReq = {};
-export type GetUserCharacterRes = {};
+export type GetUserCharacterRes = Avatar[];
 
 export type ParticipateWorldReq = {
   worldId: number;
   avatarId: number;
 };
-export type ParticipateWorldRes = {};
+export type ParticipateWorldRes = {
+  isMember: boolean;
+};
 
 export type AddCharacterReq = {
   file: any;
@@ -95,7 +159,7 @@ export type AddCharacterReq = {
 export type AddCharacterRes = {};
 
 export type GetRecommendedWorldReq = {};
-export type GetRecommendedWorldRes = {};
+export type GetRecommendedWorldRes = RecommendedWorld;
 
 export type PostCharacterImgReq = {};
 export type PostCharacterImgRes = {};
@@ -106,7 +170,7 @@ export type PutCharacterInfoRes = {};
 export type GetCharacterInfoReq = {
   avatarId: number;
 };
-export type GetCharacterInfoRes = {};
+export type GetCharacterInfoRes = Avatar;
 
 export type GetProgressReq = {};
 export type GetProgressRes = {};
@@ -123,14 +187,17 @@ export type CreateHashTagReq = {};
 export type CreateHashTagRes = {};
 
 export type SearchHashTagReq = {};
-export type SearchHashTagRes = {};
+export type SearchHashTagRes = {
+  hashtagId: 0;
+  hashtagName: "string";
+}[];
 
 export type GetTodayWordReq = {
   avatarId: number;
   worldId: number;
   wordTodayId: number;
 };
-export type GetTodayWordRes = {};
+export type GetTodayWordRes = WordToday;
 
 export type CreateWordTodayReq = {
   avatarId: number;
@@ -143,10 +210,14 @@ export type GetWorldTodoProgressReq = {};
 export type GetWorldTodoProgressRes = {};
 
 export type GetRecommendedWorldTodosReq = {};
-export type GetRecommendedWorldTodosRes = {};
+export type GetRecommendedWorldTodosRes = {
+  recommendedTodoId: number;
+  recommendedTodoContent: string;
+  recommendedWorld: RecommendedWorld;
+}[];
 
 export type GetAlarmRecommendedReq = {};
-export type GetAlarmRecommendedRes = {};
+export type GetAlarmRecommendedRes = RecommendedAlarm[];
 
 export type EditCharacterInfoReq = {
   avatarId: number;
