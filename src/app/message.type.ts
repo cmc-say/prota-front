@@ -4,11 +4,7 @@ export enum MessageType {
   LOG_OUT = "LOG_OUT",
 }
 
-export interface MessageValue {
-  payload: string;
-}
-
 export interface PostMessage {
   type: MessageType;
-  message: MessageValue;
+  message: string;
 }

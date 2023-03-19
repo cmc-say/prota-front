@@ -45,9 +45,6 @@ export default function CreateWorldFour() {
                 ></CharacterCard>
               </SwiperSlide>
             ))}
-            <SwiperSlide>
-              <EmptyCharacterCard></EmptyCharacterCard>
-            </SwiperSlide>
           </Swiper>
           <SubFooter question="세계관의 캐릭터를 새로 만들래요">
             캐릭터 만들러가기 &gt;

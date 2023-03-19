@@ -3,6 +3,7 @@ import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Props = {
   subTitle?: string | false;
@@ -21,49 +22,78 @@ export const FooterBtn: React.FC<Props> = ({
   popStack,
   href = "/",
 }) => {
+  const [isKeyUp, setKeyUp] = useState<boolean>(false);
+
+  const detectResize = () => {
+    let width = window.innerWidth || document.body.clientWidth;
+    let height = window.innerHeight || document.body.clientHeight;
+
+    if (Math.max(0.8, height / screen.height) === 0.8) {
+      setKeyUp(true);
+    } else {
+      setKeyUp(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", detectResize);
+    document.addEventListener("resize", detectResize);
+    return () => {
+      window.removeEventListener("resize", detectResize);
+      document.removeEventListener("resize", detectResize);
+    };
+  }, []);
+
   const router = useRouter();
   return (
-    <Footer>
-      {subTitle && (
-        <SubTitle
-          color={error ? ColorType.ERROR : ColorType.NEUTRAL100}
-          type={TextSizeType.KR_CAPTION_01}
-        >
-          {subTitle}
-        </SubTitle>
-      )}
-
-      {isBack ? (
-        <Button onClick={() => router.back()}>
-          <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_SUB_HEAD_01}>
-            {children}
-          </Text>
-        </Button>
-      ) : (
-        <Button
-          onClick={() => {
-            if (!popStack) {
-              return;
-            }
-            setTimeout(() => {
-              router.replace(href);
-            }, 100);
-            for (let index = 0; index < popStack; index++) {
-              router.back();
-            }
-          }}
-        >
-          <Link href={href}>
-            <Text
-              color={ColorType.NEUTRAL00}
-              type={TextSizeType.KR_SUB_HEAD_01}
+    <>
+      {!isKeyUp && (
+        <Footer>
+          {subTitle && (
+            <SubTitle
+              color={error ? ColorType.ERROR : ColorType.NEUTRAL100}
+              type={TextSizeType.KR_CAPTION_01}
             >
-              {children}
-            </Text>
-          </Link>
-        </Button>
+              {subTitle}
+            </SubTitle>
+          )}
+
+          {isBack ? (
+            <Button onClick={() => router.back()}>
+              <Text
+                color={ColorType.NEUTRAL00}
+                type={TextSizeType.KR_SUB_HEAD_01}
+              >
+                {children}
+              </Text>
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                if (!popStack) {
+                  return;
+                }
+                setTimeout(() => {
+                  router.replace(href);
+                }, 100);
+                for (let index = 0; index < popStack; index++) {
+                  router.back();
+                }
+              }}
+            >
+              <Link href={href}>
+                <Text
+                  color={ColorType.NEUTRAL00}
+                  type={TextSizeType.KR_SUB_HEAD_01}
+                >
+                  {children}
+                </Text>
+              </Link>
+            </Button>
+          )}
+        </Footer>
       )}
-    </Footer>
+    </>
   );
 };
 

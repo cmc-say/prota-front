@@ -24,7 +24,7 @@ export const ProgressBar: React.FC<Props> = ({ percent }) => {
 
 const ProgressText = styled(Text)<{ percent: number }>`
   position: absolute;
-  bottom: -4px;
+  bottom: -2px;
   left: ${({ percent }) => `calc(${Math.max(percent, 9)}% - 20px)`};
   z-index: 10;
 `;
@@ -42,7 +42,7 @@ const BaseBox = styled.div`
   left: 0;
   top: 0;
   border-radius: 999px;
-  transition: width 1s ease-in-out;
+  transition: width 0.5s ease-in-out;
 `;
 
 const Background = styled(BaseBox)`
@@ -53,4 +53,5 @@ const Background = styled(BaseBox)`
 const Progress = styled(BaseBox)<{ percent: number }>`
   background: ${ColorType.SECONDARY1};
   width: ${({ percent }) => percent}%;
+  border-radius: ${({ percent }) => 100 - percent}px;
 `;

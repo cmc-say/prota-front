@@ -41,7 +41,7 @@ export default function LoginPage() {
         });
     }
   };
-  
+
   useEffect(() => {
     const loginRequired =
       (window as any).loginRequired || (document as any).loginRequired;

@@ -69,9 +69,8 @@ const FDiv = styled.div`
 `;
 
 export default function HomePage() {
-  const [percent, setPercent] = useState<number>(20);
   const [isToggleOn, setToggleState] = useState(true);
-  const [state, _] = useRecoilState(onBoardState);
+  const [index, setIndex] = useState(0);
   const handleToggleContainerClick = () => {
     setToggleState((prev) => !prev);
   };
@@ -80,7 +79,6 @@ export default function HomePage() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          {/* <Theme.Light></Theme.Light> */}
           <Header action={<AlarmDot href="/home/alarm" />} />
           <div onClick={handleToggleContainerClick}>
             <Toggle initialOnOff={isToggleOn}></Toggle>
@@ -96,6 +94,9 @@ export default function HomePage() {
                 direction="horizontal"
                 spaceBetween={0}
                 slidesPerView={1.02}
+                onSlideChange={(e) => {
+                  setIndex(e.activeIndex);
+                }}
               >
                 {AvatarMock.map((avater, index) => (
                   <SwiperSlide key={avater.avatarName}>
@@ -111,15 +112,17 @@ export default function HomePage() {
                   <EmptyCharacterCard></EmptyCharacterCard>
                 </SwiperSlide>
               </Swiper>
-              <Styled.ProgressForm>
-                <GraphText
-                  color={ColorType.NEUTRAL00}
-                  type={TextSizeType.KR_SUB_HEAD_01}
-                >
-                  캐릭터 과몰입 그래프
-                </GraphText>
-                <ProgressBar percent={0} />
-              </Styled.ProgressForm>
+              {index < AvatarMock.length && (
+                <Styled.ProgressForm>
+                  <GraphText
+                    color={ColorType.NEUTRAL00}
+                    type={TextSizeType.KR_SUB_HEAD_01}
+                  >
+                    캐릭터 과몰입 그래프
+                  </GraphText>
+                  <ProgressBar percent={AvatarMock[index].progressNumber} />
+                </Styled.ProgressForm>
+              )}
             </>
           ) : (
             <CheckListCard

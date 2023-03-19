@@ -12,7 +12,7 @@ export default function OnBoard() {
     <Styled.LWrapper>
       <Layout.Mobile>
         <Styled.Container>
-          <Header back />
+          <Header />
           <Styled.TitleIcon
             src={"/icons/PROTA.svg"}
             alt="PROTA"

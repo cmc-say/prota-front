@@ -2,10 +2,10 @@
 
 import styled from "@emotion/styled";
 import { useEffect, useMemo, useState } from "react";
-import { WorldCard } from "../../components/world/WorldCard";
+import { WorldCard } from "../../../components/world/WorldCard";
 import { Layout } from "@/styled/layout";
-import { WorldCharacter } from "../../components/world/WorldCharacter";
-import { CreateWorld } from "../../components/world/CreateWorld";
+import { WorldCharacter } from "../../../components/world/WorldCharacter";
+import { CreateWorld } from "../../../components/world/CreateWorld";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   AtomAddCharacterWorld,
@@ -46,31 +46,21 @@ export const mockupData = {
     data: [
       {
         worldId: 1,
-        worldName: "명화가 살아있다.",
+        worldName: "좀비와 함께 살자",
         worldUserLimit: 10,
-        worldImg: "/icons/명화1.svg",
+        worldImg: "/icons/image.svg",
         worldStartDate: "2023-02-21T00:00:00",
         worldEndDate: "2023-03-21T00:00:00",
         hashtags: [
           {
-            worldHashtagId: 1,
-            hashtagId: 1,
-            hashtagName: "명화모임",
-          },
-          {
-            worldHashtagId: 2,
-            hashtagId: 2,
-            hashtagName: "자기관리",
-          },
-          {
             worldHashtagId: 3,
             hashtagId: 3,
-            hashtagName: "공부",
+            hashtagName: "좀비",
           },
           {
             worldHashtagId: 4,
             hashtagId: 4,
-            hashtagName: "외국어",
+            hashtagName: "생존",
           },
         ],
         worldHostUserId: 1,
@@ -98,7 +88,7 @@ export const mockupData = {
         worldId: 2,
         worldName: "세계관 하나",
         worldUserLimit: 10,
-        worldImg: "/icons/명화2.svg",
+        worldImg: "url",
         worldStartDate: "2023-02-21T00:00:00",
         worldEndDate: "2023-03-21T00:00:00",
         hashtags: [
@@ -136,6 +126,156 @@ export const mockupData = {
             worldAvatarId: 4,
             worldId: 1,
             avatarId: 3,
+          },
+        ],
+      },
+      {
+        worldId: 3,
+        worldName: "세계관 하나",
+        worldUserLimit: 10,
+        worldImg: "url",
+        worldStartDate: "2023-02-21T00:00:00",
+        worldEndDate: "2023-03-21T00:00:00",
+        hashtags: [
+          {
+            worldHashtagId: 1,
+            hashtagId: 1,
+            hashtagName: "해시태그1",
+          },
+          {
+            worldHashtagId: 2,
+            hashtagId: 2,
+            hashtagName: "해시태그2",
+          },
+          {
+            worldHashtagId: 3,
+            hashtagId: 3,
+            hashtagName: "해시태그3",
+          },
+        ],
+        worldHostUserId: 1,
+        worldNotice: "공지",
+        worldPassword: "123",
+        worldAvatars: [
+          {
+            worldAvatarId: 1,
+            worldId: 1,
+            avatarId: 1,
+          },
+          {
+            worldAvatarId: 3,
+            worldId: 1,
+            avatarId: 2,
+          },
+          {
+            worldAvatarId: 4,
+            worldId: 1,
+            avatarId: 3,
+          },
+        ],
+      },
+      {
+        worldId: 4,
+        worldName: "세계관 둘 하나",
+        worldUserLimit: 10,
+        worldImg: "url",
+        worldStartDate: "2023-02-21T00:00:00",
+        worldEndDate: "2023-03-21T00:00:00",
+        hashtags: [
+          {
+            worldHashtagId: 1,
+            hashtagId: 4,
+            hashtagName: "해시태그1",
+          },
+          {
+            worldHashtagId: 4,
+            hashtagId: 5,
+            hashtagName: "해시태그4",
+          },
+          {
+            worldHashtagId: 5,
+            hashtagId: 6,
+            hashtagName: "해시태그5",
+          },
+        ],
+        worldHostUserId: 1,
+        worldNotice: "공지",
+        worldPassword: "123",
+        worldAvatars: [
+          {
+            worldAvatarId: 2,
+            worldId: 2,
+            avatarId: 1,
+          },
+        ],
+      },
+      {
+        worldId: 5,
+        worldName: "세계관 둘 하나",
+        worldUserLimit: 10,
+        worldImg: "url",
+        worldStartDate: "2023-02-21T00:00:00",
+        worldEndDate: "2023-03-21T00:00:00",
+        hashtags: [
+          {
+            worldHashtagId: 1,
+            hashtagId: 4,
+            hashtagName: "해시태그1",
+          },
+          {
+            worldHashtagId: 4,
+            hashtagId: 5,
+            hashtagName: "해시태그4",
+          },
+          {
+            worldHashtagId: 5,
+            hashtagId: 6,
+            hashtagName: "해시태그5",
+          },
+        ],
+        worldHostUserId: 1,
+        worldNotice: "공지",
+        worldPassword: "123",
+        worldAvatars: [
+          {
+            worldAvatarId: 2,
+            worldId: 2,
+            avatarId: 1,
+          },
+        ],
+      },
+      {
+        worldId: 6,
+        worldName: "세계관 둘 하나",
+        worldUserLimit: 10,
+        worldImg: "url",
+        worldStartDate: "2023-02-21T00:00:00",
+        worldEndDate: "2023-03-21T00:00:00",
+        hashtags: [
+          {
+            worldHashtagId: 1,
+            hashtagId: 4,
+            hashtagName: "해시태그1",
+          },
+          {
+            worldHashtagId: 4,
+            hashtagId: 5,
+            hashtagName: "해시태그4",
+          },
+          {
+            worldHashtagId: 5,
+            hashtagId: 6,
+            hashtagName: "해시태그5",
+          },
+        ],
+        worldHostUserId: 1,
+        worldNotice: "공지",
+        worldPassword: "123",
+        worldAvatars: [
+          {
+            worldAvatarId: 2,
+            worldId: 2,
+            avatarId: 1,
           },
         ],
       },
@@ -203,6 +343,7 @@ export default function World() {
               <WorldCharacter src={"/icons/character_add.svg"} value={"추가"} />
             </Styled.CharacterList>
             <Styled.WorldGapList>
+              <WorldCard data={mockupData.worlds.data[0]} />
               {worlds?.map((item: any) => (
                 <WorldCard key={item.worldId} data={item} />
               ))}

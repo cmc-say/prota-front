@@ -12,6 +12,12 @@ interface CharacterCardProps {
   index: number;
 }
 
+const ColorIndex: Record<number, string> = {
+  0: "#6500c3",
+  1: ColorType.TARTIARY2,
+  2: "#006851",
+};
+
 export const CharacterCard: React.FC<CharacterCardProps> = ({
   imageSrc,
   characterName,
@@ -19,7 +25,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
   index,
 }) => {
   return (
-    <CardContainer imageSrc={imageSrc}>
+    <CardContainer index={index - 1} imageSrc={imageSrc}>
       <TextWrapper.IndexedText
         color={ColorType.NEUTRAL00}
         type={TextSizeType.KR_CAPTION_01}
@@ -54,7 +60,7 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({
   );
 };
 
-const CardContainer = styled.div<{ imageSrc: string }>`
+const CardContainer = styled.div<{ imageSrc: string; index: number }>`
   margin: auto;
   position: relative;
   width: 290px;
@@ -62,8 +68,8 @@ const CardContainer = styled.div<{ imageSrc: string }>`
   border-radius: 16px;
   padding: 30px 28px;
 
-  background: ${({ imageSrc }) =>
-    `url(${imageSrc}), no-repeat linear-gradient(360deg, #6500c3 0%, rgba(255, 255, 255, 0) 100%)`};
+  background: ${({ imageSrc, index }) =>
+    `url(${imageSrc}), no-repeat linear-gradient(360deg, ${ColorIndex[index]} 0%, rgba(255, 255, 255, 0) 100%)`};
   background-size: cover;
   background-color: #ffffff;
   background-blend-mode: multiply;

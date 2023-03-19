@@ -30,6 +30,8 @@ export const WorldRectBox: React.FC<WorldBoxProps> = ({
       ) : (
         <Styled.NoneBox />
       )}
+
+      <WorldRectBoxStyled.Wrapper></WorldRectBoxStyled.Wrapper>
       <Styled.WorldText
         color={isSelected ? ColorType.SECONDARY1 : ColorType.NEUTRAL00}
         type={TextSizeType.KR_HEAD_03}
@@ -42,8 +44,21 @@ export const WorldRectBox: React.FC<WorldBoxProps> = ({
 
 const WorldRectBoxStyled = {
   Container: styled.div`
+    width: 160px;
+    height: 160px;
     position: relative;
     user-select: none;
+  `,
+  Wrapper: styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    border-radius: 16px;
+    user-select: none;
+    background-color: ${ColorType.NEUTRAL500};
+    z-index: 10;
+    opacity: 0.3;
   `,
   WorldBox: styled(Image)<{ isSelected: boolean }>`
     border-radius: 16px;

@@ -1,3 +1,4 @@
+import { alarmMock } from "@/app/mocks/homeMocks";
 import { ColorType } from "@/styled/color.type";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
@@ -6,26 +7,30 @@ import Image from "next/image";
 export const Alarm = () => {
   return (
     <Styled.Container>
-      <Styled.Dot />
-      <Styled.Profile
-        src={"/icons/steve_jobs.svg"}
-        alt="profile"
-        width={32}
-        height={32}
-      />
-      <Styled.Description
-        color={ColorType.NEUTRAL00}
-        type={TextSizeType.KR_BODY_01}
-      >
-        눈썹리스 님이 잠자고 있는 당신의 대머리 캐릭터를 깨웠어요!: "그렇게
-        살래요?"
-      </Styled.Description>
-      <Styled.Date
-        color={ColorType.NEUTRAL200}
-        type={TextSizeType.KR_CAPTION_02}
-      >
-        11:40PM
-      </Styled.Date>
+      {alarmMock.map((alarm) => (
+        <Styled.RowContainer>
+          <Styled.Dot />
+          <Styled.Profile
+            src={alarm.source}
+            alt="profile"
+            width={32}
+            height={32}
+          />
+
+          <Styled.Description
+            color={ColorType.NEUTRAL00}
+            type={TextSizeType.KR_BODY_01}
+          >
+            {alarm.content}
+          </Styled.Description>
+          <Styled.Date
+            color={ColorType.NEUTRAL200}
+            type={TextSizeType.KR_CAPTION_02}
+          >
+            {alarm.date}
+          </Styled.Date>
+        </Styled.RowContainer>
+      ))}
     </Styled.Container>
   );
 };
@@ -33,6 +38,13 @@ export const Alarm = () => {
 const AlarmStyled = {
   Container: styled.div`
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  `,
+  RowContainer: styled.div`
+    width: 100%;
+    height: 60px;
     display: flex;
     align-items: center;
   `,
@@ -45,6 +57,7 @@ const AlarmStyled = {
   `,
   Profile: styled(Image)`
     margin-right: 6px;
+    border-radius: 999px;
   `,
   Description: styled(Text)`
     flex: 1 1 0;

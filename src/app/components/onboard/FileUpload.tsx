@@ -79,7 +79,6 @@ const FileUploadStyled = {
     height: 200px;
     border: 2px dashed #6a7395;
     border-radius: 8px;
-    overflow: hidden;
   `,
   FileImg: styled(Image)`
     margin-bottom: 15px;
@@ -88,9 +87,7 @@ const FileUploadStyled = {
     display: none;
   `,
   Thumbnail: styled.img`
-    /* width: 100%; */
-    height: 100%;
-    object-fit: cover;
+    width: 100%;
   `,
 };
 

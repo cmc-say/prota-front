@@ -9,6 +9,7 @@ import { ColorType } from "@/styled/color.type";
 
 import { Attainment } from "../components/mypage/Attainment";
 import Link from "next/link";
+import { AvatarMock } from "../mocks/homeMocks";
 
 export default function MyPage() {
   return (
@@ -26,10 +27,10 @@ export default function MyPage() {
             }
           ></Header>
           <Styled.Attainment>
-            <Attainment count={12} src="purple">
+            <Attainment count={4} src="purple">
               달성 세계관
             </Attainment>
-            <Attainment count={8} src="yellow">
+            <Attainment count={4} src="yellow">
               참여 세계관
             </Attainment>
             <Attainment count={0} src="pink">
@@ -40,15 +41,17 @@ export default function MyPage() {
             type={TextSizeType.KR_HEAD_03}
             color={ColorType.NEUTRAL00}
           >
-            내 역대 캐릭터 (0)
+            내 역대 캐릭터 (3)
           </Styled.Title>
           <Styled.GridContainer>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox title="hi" imageSrc=""></WorldRectBox>
-            <WorldRectBox
-              title="hi"
-              imageSrc="/icons/steve_jobs.svg"
-            ></WorldRectBox>
+            {AvatarMock.map((avatar) => (
+              <Link href={"/mypage/1/world"}>
+                <WorldRectBox
+                  title={avatar.avatarName}
+                  imageSrc={avatar.source}
+                ></WorldRectBox>
+              </Link>
+            ))}
           </Styled.GridContainer>
         </Styled.Container>
       </Layout.Mobile>
