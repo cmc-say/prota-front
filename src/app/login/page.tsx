@@ -34,7 +34,8 @@ export default function LoginPage() {
           // @ts-ignore: Unreachable code error
           window.ReactNativeWebView?.postMessage(data);
 
-          router.push("/world/search");
+          router.push("/world/search/form");
+          // router.push("/world/search");
           // router.push("/onboard/make-character");
         })
         .catch((e: AxiosError) => {

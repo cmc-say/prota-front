@@ -1,6 +1,10 @@
 "use client";
 
-import { Worlds } from "@/app/atoms/atom";
+import {
+  AtomPopularHashtagSelector,
+  AtomSearchKeyword,
+  AtomSearchWorldSelector,
+} from "@/app/atoms/world";
 import { Header } from "@/app/components/header/Header";
 import { Search } from "@/app/components/world/Search";
 import { TagIcon } from "@/app/components/world/TagIcon";
@@ -9,7 +13,8 @@ import { ColorType } from "@/styled/color.type";
 import { Layout } from "@/styled/layout";
 import { Text, TextSizeType } from "@/styled/typography";
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const mockSearch = [
   {
@@ -64,46 +69,47 @@ const mockSearch = [
   },
 ];
 
-const mockTag = [
+const tagColor = [
   {
-    name: "#뉴진스하입보이",
     color: ColorType.NEUTRAL00,
     background: ColorType.PRIMARY1,
   },
   {
-    name: "#해리포터",
     color: ColorType.NEUTRAL600,
     background: ColorType.SECONDARY1,
   },
   {
-    name: "#짱구는못말려",
     color: ColorType.NEUTRAL00,
     background: ColorType.TARTIARY1,
   },
   {
-    name: "#범죄도시",
     color: ColorType.NEUTRAL00,
     background: ColorType.PRIMARY1,
   },
   {
-    name: "#개구리소년",
     color: ColorType.NEUTRAL600,
     background: ColorType.SECONDARY1,
   },
 ];
 
 export default function SearchWorld() {
+  const popularHashtag = useRecoilValue(AtomPopularHashtagSelector);
   const [search, setSearch] = useState("");
-  const [data, setData] = useState<Worlds>([]);
+  const searchWorld = useSetRecoilState(AtomSearchKeyword);
+  const searchWorldData = useRecoilValue(AtomSearchWorldSelector);
+
+  useMemo(() => {
+    if (!search) searchWorld("");
+  }, [search]);
 
   const onSearchEvent = () => {
-    setData(mockSearch);
+    searchWorld(search);
   };
 
   return (
-    <SearchWorldStyled.LWrapper>
+    <Styled.LWrapper>
       <Layout.Mobile>
-        <SearchWorldStyled.Container>
+        <Styled.Container>
           <Header search back>
             <Search
               submit={onSearchEvent}
@@ -111,27 +117,30 @@ export default function SearchWorld() {
               onChange={setSearch}
             />
           </Header>
-          {data.length ? (
-            <>
-              {data.map((item) => (
+          {searchWorldData.length ? (
+            <Styled.WorldList>
+              {searchWorldData.map((item) => (
                 <WorldCard key={item.worldId} data={item} />
               ))}
-            </>
+            </Styled.WorldList>
           ) : (
             <>
               <Text color={ColorType.NEUTRAL00} type={TextSizeType.KR_HEAD_03}>
                 #실시간 인기 해시태그
               </Text>
-              <SearchWorldStyled.TagList>
-                {mockTag.map((item, index) => (
-                  <TagIcon key={index} item={item} />
+              <Styled.TagList>
+                {popularHashtag.map((item, index) => (
+                  <TagIcon
+                    key={index}
+                    item={{ ...item, ...tagColor[index % 5] }}
+                  />
                 ))}
-              </SearchWorldStyled.TagList>
+              </Styled.TagList>
             </>
           )}
-        </SearchWorldStyled.Container>
+        </Styled.Container>
       </Layout.Mobile>
-    </SearchWorldStyled.LWrapper>
+    </Styled.LWrapper>
   );
 }
 
@@ -152,4 +161,12 @@ const SearchWorldStyled = {
     margin-top: 16px;
     align-items: center;
   `,
+  WorldList: styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  `,
 };
+
+const Styled = SearchWorldStyled;

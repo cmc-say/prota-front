@@ -13,7 +13,7 @@ type World = {
   todos: Todo[];
 };
 
-type Hashtag = {
+export type Hashtag = {
   worldHashtagId: number;
   hashtagId: number;
   hashtagName: string;
