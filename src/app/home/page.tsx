@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Theme } from "@/styled/theme";
 import { Toggle } from "../components/home/Toggle";
 import { CheckListCard } from "../components/home/CheckListCard";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { onBoardState } from "../onboard/store/onBoardStore";
 import { TopBar } from "../components/onboard/TopBar";
 import { ProgressBar } from "../components/ProgressBar";
@@ -24,6 +24,7 @@ import { Header } from "../components/header/Header";
 import Link from "next/link";
 import { AlarmDot } from "../components/home/AlarmDot";
 import { AvatarMock } from "../mocks/homeMocks";
+import { AtomAllCharacters } from "../atoms/Character";
 
 export const EmptyCharacterCard = () => {
   return (
@@ -69,6 +70,7 @@ const FDiv = styled.div`
 `;
 
 export default function HomePage() {
+  const characters = useRecoilValue(AtomAllCharacters);
   const [isToggleOn, setToggleState] = useState(true);
   const [index, setIndex] = useState(0);
   const handleToggleContainerClick = () => {
@@ -98,16 +100,17 @@ export default function HomePage() {
                   setIndex(e.activeIndex);
                 }}
               >
-                {AvatarMock.map((avater, index) => (
-                  <SwiperSlide key={avater.avatarName}>
-                    <CharacterCard
-                      index={index + 1}
-                      imageSrc={avater.source}
-                      characterName={avater.avatarName}
-                      characterDescription={avater.avatarDescription}
-                    ></CharacterCard>
-                  </SwiperSlide>
-                ))}
+                {characters.length &&
+                  characters.map((avatar, index) => (
+                    <SwiperSlide key={avatar.avatarName}>
+                      <CharacterCard
+                        index={index + 1}
+                        imageSrc={avatar.avatarImg}
+                        characterName={avatar.avatarName}
+                        characterDescription={avatar.avatarMessage}
+                      ></CharacterCard>
+                    </SwiperSlide>
+                  ))}
                 <SwiperSlide>
                   <EmptyCharacterCard></EmptyCharacterCard>
                 </SwiperSlide>
