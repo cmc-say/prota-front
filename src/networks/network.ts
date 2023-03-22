@@ -74,6 +74,7 @@ export type LoginReq = {
 };
 export type LoginRes = {
   accessToken: string;
+  isSignuped: boolean;
 };
 
 export type LogoutReq = {};
